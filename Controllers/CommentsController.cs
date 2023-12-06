@@ -32,9 +32,9 @@ public class CommentsController : ControllerBase
         return CommentDto;
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [HttpGet]
-    public async Task<ActionResult<List<CommentDTO>>> GetComments()
+    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetComments()
     {
         var comments = await _commentService.GetCommentsAsync();
         var commentDtos = comments.Select(CommentToDto).ToList();
@@ -42,14 +42,14 @@ public class CommentsController : ControllerBase
     }
 
     [HttpGet("post/{postId}")]
-    public async Task<ActionResult<List<CommentDTO>>> GetAllCommentsInPost(int postId)
+    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(int postId)
     {
         var comments = await _commentService.GetAllCommentsInPostAsync(postId);
         var commentDtos = comments.Select(CommentToDto).ToList();
         return Ok(commentDtos);
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteComment(int id)
     {

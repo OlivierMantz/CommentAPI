@@ -18,7 +18,7 @@ namespace CommentAPI.Services
             return await _commentRepository.GetCommentsAsync();
         }
 
-        public async Task<List<Comment>> GetAllCommentsInPostAsync(int postId)
+        public async Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(int postId)
         {
             return await _commentRepository.GetAllCommentsInPostAsync(postId);
         }
