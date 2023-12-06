@@ -11,62 +11,52 @@ namespace BackEnd.Repositories
 {
     public class CommentRepository : ICommentRepository
     {
-        private static List<Comment> _comments = new()
+        private readonly ApplicationDbContext _context;
+
+        public CommentRepository(ApplicationDbContext context)
         {
-            new ()
-            {
-                PostId = 1, UserId = 4, Content = "Nice post" 
-            },
-            new ()
-            {
-                PostId = 1, UserId = 2, Content = "Cool"
-            },
-
-        };
-
-        public List<Comment> GetComments() => _comments;
-
-        private readonly CommentContext _commentContext;
-
-        public CommentRepository(CommentContext commentContext)
-        {
-            _commentContext = commentContext;
+            _context = context;
         }
 
-        public async Task<List<Comment>> GetCommentsAsync()
+        public async Task<IEnumerable<Comment>> GetCommentsAsync()
         {
-            return await _commentContext.Comment.ToListAsync();
+            return await _context.Comments.ToListAsync();
         }
-
+        public async Task<List<Comment>> GetAllCommentsInPostAsync(int postId)
+        {
+            return await _context.Comments
+                                 .Where(c => c.PostId == postId)
+                                 .ToListAsync();
+        }
         public async Task<Comment> GetCommentByIdAsync(long id)
         {
-            return await _commentContext.Comment.FirstOrDefaultAsync(u => u.Id == id);
+            return await _context.Comments.FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public async Task PostCommentAsync(Comment comment)
+        public async Task CreateCommentAsync(Comment comment)
         {
             if (comment == null)
             {
                 throw new ArgumentNullException(nameof(comment));
             }
-            await _commentContext.Comment.AddAsync(comment);
-            await _commentContext.SaveChangesAsync();
+            await _context.Comments.AddAsync(comment);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<bool> PutCommentAsync(Comment comment)
         {
-            _commentContext.Comment.Update(comment);
-            var updated = await _commentContext.SaveChangesAsync();
+            _context.Comments.Update(comment);
+            var updated = await _context.SaveChangesAsync();
             return updated > 0;
         }
 
         public async Task<bool> DeleteCommentAsync(long id)
         {
-            var comment = await _commentContext.Comment.FindAsync(id);
+            var comment = await _context.Comments.FindAsync(id);
             if (comment != null)
             {
-                _commentContext.Comment.Remove(comment);
-                var deleted = await _commentContext.SaveChangesAsync();
+                _context.Comments.Remove(comment);
+                var deleted = await _context.SaveChangesAsync();
                 return deleted > 0;
             }
 
@@ -75,7 +65,7 @@ namespace BackEnd.Repositories
 
         public async Task<bool> CommentExistsAsync(long commentId)
         {
-            return await _commentContext.Comment.AnyAsync(u => u.Id == commentId);
+            return await _context.Comments.AnyAsync(u => u.Id == commentId);
         }
     }
 }

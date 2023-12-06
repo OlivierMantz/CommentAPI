@@ -17,15 +17,17 @@ namespace CommentAPI.Data
             modelBuilder.Entity<Comment>().HasData(
             new()
             {
+                Id = 1,
+                Content = "Nice post",
+                UserId = 4,
                 PostId = 1,
-                CommentId = 4,
-                Content = "Nice post"
             },
             new()
             {
+                Id = 1,
+                Content = "Cool",
+                UserId = 2,
                 PostId = 1,
-                CommentId = 2,
-                Content = "Cool"
             }
             );
         }

@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using CommentAPI.Models;
 using CommentAPI.Models.DTOs;
 using CommentAPI.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using CommentAPI.Services;
+using CommentAPI.Data;
 
 namespace CommentAPI.Controllers;
 
@@ -10,20 +13,54 @@ namespace CommentAPI.Controllers;
 public class CommentsController : ControllerBase
 {
 
-    private readonly ICommentRepository _commentRepository;
-    public CommentsController(ICommentRepository commentRepository)
+    private readonly ICommentService _commentService;
+
+    public CommentsController(ICommentService commentService)
     {
-        _commentRepository = commentRepository;
+        _commentService = commentService;
     }
+
+    private static CommentDTO CommentToDto(Comment Comment)
+    {
+        var CommentDto = new CommentDTO
+        {
+            Id = Comment.Id,
+            Content = Comment.Content,
+            UserId= Comment.UserId,
+            PostId = Comment.PostId
+        };
+        return CommentDto;
+    }
+
+    [Authorize]
     [HttpGet]
-    public IActionResult Get()
+    public async Task<ActionResult<List<CommentDTO>>> GetComments()
     {
-        return Ok(_commentRepository.GetCommentsAsync());
+        var comments = await _commentService.GetCommentsAsync();
+        var commentDtos = comments.Select(CommentToDto).ToList();
+        return Ok(commentDtos);
     }
-    [HttpDelete("{id:int}")]
-    public IActionResult Delete(int id)
+
+    [HttpGet("post/{postId}")]
+    public async Task<ActionResult<List<CommentDTO>>> GetAllCommentsInPost(int postId)
     {
-        var commentDeleted = _commentRepository.DeleteComment(id);
-        return commentDeleted ? NoContent() : NotFound();
+        var comments = await _commentService.GetAllCommentsInPostAsync(postId);
+        var commentDtos = comments.Select(CommentToDto).ToList();
+        return Ok(commentDtos);
+    }
+
+    [Authorize]
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteComment(int id)
+    {
+        var existingComment = await _commentService.GetCommentByIdAsync(id);
+        if (existingComment == null)
+        {
+            return NotFound();
+        }
+
+        await _commentService.DeleteCommentAsync(id);
+
+        return NoContent();
     }
 }
