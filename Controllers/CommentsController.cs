@@ -9,7 +9,7 @@ using CommentAPI.Data;
 namespace CommentAPI.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class CommentsController : ControllerBase
 {
 
@@ -42,7 +42,7 @@ public class CommentsController : ControllerBase
     }
 
     [HttpGet("post/{postId}")]
-    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(int postId)
+    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(long postId)
     {
         var comments = await _commentService.GetAllCommentsInPostAsync(postId);
         var commentDtos = comments.Select(CommentToDto).ToList();
@@ -51,7 +51,7 @@ public class CommentsController : ControllerBase
 
     [Authorize(Roles = "Admin")]
     [HttpDelete("{id:int}")]
-    public async Task<IActionResult> DeleteComment(int id)
+    public async Task<IActionResult> DeleteComment(long id)
     {
         var existingComment = await _commentService.GetCommentByIdAsync(id);
         if (existingComment == null)

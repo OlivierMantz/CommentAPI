@@ -36,7 +36,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     options.Audience = builder.Configuration["Auth0:Audience"];
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        NameClaimType = ClaimTypes.NameIdentifier
+        NameClaimType = ClaimTypes.Name,
+        RoleClaimType = "https://sublimewebapp.me/roles"
+
     };
 });
 
@@ -102,8 +104,24 @@ void SeedDatabase(WebApplication app)
         {
             // Seed data
             context.Comments.AddRange(
-                new Comment { Content = "Nice image", UserId = 1, PostId = 1 },
-                new Comment { Content = "Cool", UserId = 2, PostId = 1 }
+                new Comment
+                {
+                    Content = "Nice image",
+                    UserId = 1,
+                    PostId = 1
+                },
+                new Comment
+                {
+                    Content = "Cool",
+                    UserId = 2,
+                    PostId = 1
+                },
+                new Comment
+                {
+                    Content = "Beautiful",
+                    UserId = 2,
+                    PostId = 2,
+                }
             );
             context.SaveChanges();
         }

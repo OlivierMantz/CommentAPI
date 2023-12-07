@@ -6,7 +6,7 @@ namespace CommentAPI.Repositories
     {
         Task<IEnumerable<Comment>> GetCommentsAsync();
         Task<Comment> GetCommentByIdAsync(long id);
-        Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(int postId);
+        Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(long postId);
 
         Task CreateCommentAsync(Comment comment);
         Task<bool> PutCommentAsync(Comment comment);

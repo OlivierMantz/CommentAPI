@@ -22,7 +22,7 @@ namespace BackEnd.Repositories
         {
             return await _context.Comments.ToListAsync();
         }
-        public async Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(int postId)
+        public async Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(long postId)
         {
             return await _context.Comments
                                  .Where(c => c.PostId == postId)
