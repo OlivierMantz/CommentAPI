@@ -9,7 +9,7 @@ sqlite3 Comment.db
 CREATE TABLE Comments (
     Id INTEGER PRIMARY KEY,
     Content TEXT NOT NULL,
-    UserId INTEGER NOT NULL,
+    UserId TEXT NOT NULL,
     PostId INTEGER NOT NULL
 );
 ```

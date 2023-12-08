@@ -5,6 +5,8 @@ using CommentAPI.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using CommentAPI.Services;
 using CommentAPI.Data;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CommentAPI.Controllers;
 
@@ -14,6 +16,10 @@ public class CommentsController : ControllerBase
 {
 
     private readonly ICommentService _commentService;
+    private string GetCurrentUserId()
+    {
+        return User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+    }
 
     public CommentsController(ICommentService commentService)
     {
@@ -41,7 +47,7 @@ public class CommentsController : ControllerBase
         return Ok(commentDtos);
     }
 
-    [HttpGet("post/{postId}")]
+    [HttpGet("post/{postId:long}")]
     public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(long postId)
     {
         var comments = await _commentService.GetAllCommentsInPostAsync(postId);
@@ -49,14 +55,54 @@ public class CommentsController : ControllerBase
         return Ok(commentDtos);
     }
 
-    [Authorize(Roles = "Admin")]
-    [HttpDelete("{id:int}")]
+    [Authorize(Roles = "User, Admin")]
+    [HttpPost("post/{postId:long}")]
+    public async Task<IActionResult> CreateComment(long postId, [FromBody]  CreateCommentDTO createCommentDTO)
+    {
+        if (string.IsNullOrEmpty(createCommentDTO.Content) || postId <= 0)
+        {
+            return BadRequest();
+        }
+
+        var userId = GetCurrentUserId();
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Unauthorized();
+        }
+
+        var comment = new Comment
+        {
+            Content = createCommentDTO.Content,
+            UserId = userId,
+            PostId = postId
+        };
+
+        var createdComment = await _commentService.CreateCommentAsync(comment);
+        if (createdComment == null)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+        var createdCommentDto = CommentToDto(createdComment);
+        return Ok(createdCommentDto);
+    }
+
+    [Authorize(Roles = "User, Admin")]
+    [HttpDelete("{id:long}")]
     public async Task<IActionResult> DeleteComment(long id)
     {
         var existingComment = await _commentService.GetCommentByIdAsync(id);
         if (existingComment == null)
         {
             return NotFound();
+        }
+
+        var currentUserId = GetCurrentUserId();
+
+
+        if (existingComment.UserId != currentUserId && !User.IsInRole("Admin"))
+        {
+            return Forbid();
         }
 
         await _commentService.DeleteCommentAsync(id);

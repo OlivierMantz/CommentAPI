@@ -33,14 +33,17 @@ namespace BackEnd.Repositories
             return await _context.Comments.FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public async Task CreateCommentAsync(Comment comment)
+        public async Task<Comment> CreateCommentAsync(Comment comment)
         {
             if (comment == null)
             {
                 throw new ArgumentNullException(nameof(comment));
             }
+
             await _context.Comments.AddAsync(comment);
             await _context.SaveChangesAsync();
+
+            return comment;
         }
 
         public async Task<bool> PutCommentAsync(Comment comment)

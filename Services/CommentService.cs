@@ -28,9 +28,10 @@ namespace CommentAPI.Services
             return await _commentRepository.GetCommentByIdAsync(id);
         }
 
-        public async Task CreateCommentAsync(Comment comment)
+        public async Task<Comment> CreateCommentAsync(Comment comment)
         {
             await _commentRepository.CreateCommentAsync(comment);
+            return comment;
         }
 
         public async Task<bool> PutCommentAsync(Comment comment)

@@ -107,19 +107,19 @@ void SeedDatabase(WebApplication app)
                 new Comment
                 {
                     Content = "Nice image",
-                    UserId = 1,
+                    UserId = "1",
                     PostId = 1
                 },
                 new Comment
                 {
                     Content = "Cool",
-                    UserId = 2,
+                    UserId = "2",
                     PostId = 1
                 },
                 new Comment
                 {
                     Content = "Beautiful",
-                    UserId = 2,
+                    UserId = "2",
                     PostId = 2,
                 }
             );
