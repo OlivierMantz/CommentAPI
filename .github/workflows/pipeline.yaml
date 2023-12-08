@@ -36,10 +36,10 @@ jobs:
                   dotnet-version: "7.0.x"
 
             - name: Restore Dependencies
-              run: dotnet restore "../CommentAPI/CommentAPI.csproj"
+              run: dotnet restore "./CommentAPI/CommentAPI.csproj"
 
             - name: Restore Test Dependencies
-              run: dotnet restore "../CommentAPI/CommentAPITests.csproj"
+              run: dotnet restore "./CommentAPITests/CommentAPITests.csproj"
 
             - name: Build
               run: dotnet build --configuration Release --no-restore
@@ -71,7 +71,7 @@ jobs:
                   path: .
             - name: Test
               run: |
-                  dotnet test "../CommentAPI/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal
+                  dotnet test "./CommentAPI/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal
 
     publish_to_dockerhub:
         # needs: [test]
@@ -90,6 +90,6 @@ jobs:
               uses: docker/build-push-action@v5
               with:
                   context: .
-                  file: ../CommentAPI/Dockerfile
+                  file: ./CommentAPI/Dockerfile
                   push: true
                   tags: ${{ secrets.DOCKERHUB_USERNAME }}/comment_api:dev_auth
