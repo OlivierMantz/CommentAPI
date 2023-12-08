@@ -71,7 +71,7 @@ jobs:
                   path: .
             - name: Test
               run: |
-                  dotnet test "./CommentAPI/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal
+                  dotnet test "./CommentAPITests/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal
 
     publish_to_dockerhub:
         # needs: [test]
