@@ -39,7 +39,7 @@ jobs:
               run: dotnet restore "../CommentAPI/CommentAPI.csproj"
 
             - name: Restore Test Dependencies
-              run: dotnet restore "../CommentAPITests/CommentAPITests.csproj"
+              run: dotnet restore "../CommentAPI/CommentAPITests.csproj"
 
             - name: Build
               run: dotnet build --configuration Release --no-restore
