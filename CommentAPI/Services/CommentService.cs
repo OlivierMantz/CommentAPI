@@ -13,9 +13,14 @@ namespace CommentAPI.Services
         }
 
 
-        public async Task<List<Comment>> GetCommentsAsync()
+        public async Task<IEnumerable<Comment>> GetCommentsAsync()
         {
             return await _commentRepository.GetCommentsAsync();
+        }
+
+        public async Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(long postId)
+        {
+            return await _commentRepository.GetAllCommentsInPostAsync(postId);
         }
 
         public async Task<Comment> GetCommentByIdAsync(long id)
@@ -23,9 +28,10 @@ namespace CommentAPI.Services
             return await _commentRepository.GetCommentByIdAsync(id);
         }
 
-        public async Task PostCommentAsync(Comment comment)
+        public async Task<Comment> CreateCommentAsync(Comment comment)
         {
-            await _commentRepository.PostCommentAsync(comment);
+            await _commentRepository.CreateCommentAsync(comment);
+            return comment;
         }
 
         public async Task<bool> PutCommentAsync(Comment comment)

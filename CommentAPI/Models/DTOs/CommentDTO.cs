@@ -8,7 +8,7 @@ namespace CommentAPI.Models.DTOs
 
         public string? Content { get; set; }
 
-        public long? UserId { get; set; }
+        public string UserId { get; set; }
 
         public long? PostId { get; set; }
     }
