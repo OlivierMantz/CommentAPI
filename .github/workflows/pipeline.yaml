@@ -74,7 +74,7 @@ jobs:
                   dotnet test "./CommentAPITests/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal
 
     publish_to_dockerhub:
-        # needs: [test]
+        needs: [test]
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Repository
