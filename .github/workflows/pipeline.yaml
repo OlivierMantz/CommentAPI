@@ -36,7 +36,7 @@ jobs:
                   dotnet-version: "7.0.x"
 
             - name: Restore Dependencies
-              run: dotnet restore "./CommentAPI/CommentAPI.csproj"
+              run: dotnet restore "../CommentAPI/CommentAPI.csproj"
 
             # - name: Restore Test Dependencies
             #   run: dotnet restore "./CommentAPITests/CommentAPITests.csproj"
@@ -90,6 +90,6 @@ jobs:
               uses: docker/build-push-action@v5
               with:
                   context: .
-                  file: ./CommentAPI/Dockerfile
+                  file: ../CommentAPI/Dockerfile
                   push: true
                   tags: ${{ secrets.DOCKERHUB_USERNAME }}/comment_api:dev_auth
