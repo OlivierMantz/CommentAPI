@@ -42,7 +42,7 @@ public class CommentsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<CommentDTO>>> GetComments()
     {
-        var comments = await _commentService.GetCommentsAsync();
+        var comments = await _commentService.GetAllCommentsAsync();
         var commentDtos = comments.Select(CommentToDto).ToList();
         return Ok(commentDtos);
     }
@@ -57,7 +57,7 @@ public class CommentsController : ControllerBase
 
     [Authorize(Roles = "User, Admin")]
     [HttpPost("post/{postId:long}")]
-    public async Task<IActionResult> CreateComment(long postId, [FromBody]  CreateCommentDTO createCommentDTO)
+    public async Task<IActionResult> CreateComment(long postId, [FromBody] CreateCommentDTO createCommentDTO)
     {
         if (string.IsNullOrEmpty(createCommentDTO.Content) || postId <= 0)
         {

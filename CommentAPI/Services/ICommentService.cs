@@ -4,10 +4,9 @@ namespace CommentAPI.Services
 {
     public interface ICommentService
     {
-        Task<IEnumerable<Comment>> GetCommentsAsync();
         Task<Comment> GetCommentByIdAsync(long id);
+        Task<IEnumerable<Comment>> GetAllCommentsAsync();
         Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(long postId);
-
         Task<Comment> CreateCommentAsync(Comment comment);
         Task<bool> PutCommentAsync(Comment comment);
         Task<bool> DeleteCommentAsync(long id);
