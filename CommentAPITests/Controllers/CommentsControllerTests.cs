@@ -76,7 +76,7 @@ namespace CommentAPI.Controllers.Tests
                 Content = "Great comment!"
             };
 
-            var result = await controller.CreateComment(postId, createCommentDTO);
+            var result = await controller.CreateCommentAsync(postId, createCommentDTO);
 
             var okResult = Assert.IsType<OkObjectResult>(result);
             var commentDto = Assert.IsType<CommentDTO>(okResult.Value);
