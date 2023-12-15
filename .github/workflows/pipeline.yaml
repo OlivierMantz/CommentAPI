@@ -72,8 +72,11 @@ jobs:
 
         - name: Print Current Working Directory
           run: |
-              pwd
               ls /home/runner/work/CommentAPI/CommentAPI
+              echo "***"
+              ls 
+              echo "***"
+              ls /home/runner/work/CommentAPI/CommentAPI/CommentAPITests/ 
 
         - name: Test and Collect Coverage
           run: |
