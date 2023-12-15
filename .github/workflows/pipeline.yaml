@@ -53,7 +53,7 @@ jobs:
                       CommentAPITests/bin/Release/net7.0/
 
     test:
-        needs: build
+        # needs: build
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Repository
@@ -75,7 +75,10 @@ jobs:
                   dotnet test "./CommentAPITests/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal --collect:"XPlat Code Coverage"
             
             - name: List Coverage Files
-              run: ls CommentAPITests/TestResults
+              run: |
+                ls 
+                ls TestResults
+                ls CommentAPITests
 
             - name: Convert Coverage Format
               run: |
