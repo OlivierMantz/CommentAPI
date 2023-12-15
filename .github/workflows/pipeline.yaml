@@ -76,7 +76,7 @@ jobs:
             
             - name: List Coverage Files
               run: |
-                ls 
+                ls TestResults
 
             - name: Convert Coverage Format
               run: |
