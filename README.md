@@ -12,6 +12,7 @@ CREATE TABLE Comments (
     UserId TEXT NOT NULL,
     PostId INTEGER NOT NULL
 );
+
 ```
 ## Checking tables 
 ```
