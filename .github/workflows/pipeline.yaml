@@ -73,6 +73,9 @@ jobs:
         - name: Test and Collect Coverage
           run: |
             dotnet test ./CommentAPITests/CommentAPITests.csproj --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/
+      
+        - name: List TestResults Directory Contents
+          run: ls -la TestResults
 
         - name: Upload TestResults as Artifact
           uses: actions/upload-artifact@v3
