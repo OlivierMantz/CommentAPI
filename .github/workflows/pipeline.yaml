@@ -70,20 +70,18 @@ jobs:
             name: built-app
             path: .
 
-        - name: Print Current Working Directory
-          run: |
-              ls /home/runner/work/CommentAPI/CommentAPI
-              echo "***"
-              ls 
-              echo "***"
-              ls /home/runner/work/CommentAPI/CommentAPI/CommentAPITests/ 
 
         - name: Test and Collect Coverage
           run: |
             dotnet test ./CommentAPITests/CommentAPITests.csproj --verbosity detailed /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
-
+        
+        - name: Print Current Working Directory
+          run: |
+            echo "***"
+            ls /home/runner/work/CommentAPI/CommentAPI/CommentAPITests/ 
+  
         - name: List Default TestResults Directory
-          run: ls -la TestResults
+          run: ls -la .CommentAPITests/TestResults
 
         - name: Upload TestResults as Artifact
           uses: actions/upload-artifact@v3
