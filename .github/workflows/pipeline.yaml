@@ -71,14 +71,16 @@ jobs:
             path: .
 
         - name: Print Current Working Directory
-          run: pwd
+          run: |
+              pwd
+              ls /home/runner/work/CommentAPI/CommentAPI
 
         - name: Test and Collect Coverage
           run: |
             dotnet test ./CommentAPITests/CommentAPITests.csproj --verbosity detailed /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
 
         - name: List Default TestResults Directory
-          run: ls -la $(Build.SourcesDirectory)/TestResults
+          run: ls -la TestResults
 
         - name: Upload TestResults as Artifact
           uses: actions/upload-artifact@v3
