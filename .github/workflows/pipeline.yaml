@@ -69,9 +69,21 @@ jobs:
               with:
                   name: built-app
                   path: .
+
             - name: Test
               run: |
-                  dotnet test "./CommentAPITests/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal
+                  dotnet test "./CommentAPITests/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal --collect:"XPlat Code Coverage"
+
+            - name: Convert Coverage Format
+              run: |
+                  dotnet tool install --global dotnet-reportgenerator-globaltool
+                  reportgenerator -reports:"CommentAPITests/TestResults/**/coverage.cobertura.xml" -targetdir:coverage -reporttypes:"Cobertura"
+
+            - name: Upload Coverage to Artifacts
+              uses: actions/upload-artifact@v3
+              with:
+                  name: code-coverage
+                  path: coverage
 
     publish_to_dockerhub:
         needs: [test]
@@ -93,3 +105,30 @@ jobs:
                   file: ./CommentAPI/Dockerfile
                   push: true
                   tags: ${{ secrets.DOCKERHUB_USERNAME }}/comment_api:dev_auth
+
+    sonarcloud_analysis:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v4
+            with:
+              fetch-depth: 0 # SonarCloud scanner needs the full history to assign issues correctly
+          - name: Download Code Coverage Results
+            uses: actions/download-artifact@v3
+            with:
+              name: code-coverage
+              path: coverage
+          - name: Setup .NET Core SDK
+            uses: actions/setup-dotnet@v2
+            with:
+              dotnet-version: "7.0.x"
+          - name: SonarCloud Scan
+            uses: sonarsource/sonarcloud-github-action@master
+            with:
+              args: >
+                -Dsonar.projectKey=OlivierMantz_CommentAPI
+                -Dsonar.organization=oliviermantz
+                -Dsonar.cs.opencover.reportsPaths=coverage/Cobertura.xml
+            env:
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
