@@ -70,22 +70,15 @@ jobs:
                   name: built-app
                   path: .
 
-            - name: Test
+            - name: Test and Collect Coverage
               run: |
-                dotnet test "./CommentAPITests/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal --collect:"XPlat Code Coverage"
-
-            - name: Locate and Copy Coverage Report
-              run: |
-                cp $(find TestResults -name 'coverage.cobertura.xml') coverage/coverage.cobertura.xml
-
-            # - name: List Test Results
-            #   run: ls -R TestResults
-              
+                dotnet test ./CommentAPITests --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/
+          
             - name: Convert Coverage Format
               run: |
                 dotnet tool install --global dotnet-reportgenerator-globaltool
-                reportgenerator -reports:coverage/coverage.cobertura.xml -targetdir:coverage -reporttypes:"Cobertura"
-            
+                reportgenerator -reports:./TestResults/coverage.cobertura.xml -targetdir:coverage -reporttypes:"Cobertura"
+                          
             - name: Upload Coverage to Artifacts
               uses: actions/upload-artifact@v3
               with:
