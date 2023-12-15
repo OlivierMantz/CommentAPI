@@ -77,13 +77,11 @@ jobs:
             - name: List Coverage Files
               run: |
                 ls 
-                ls TestResults
-                ls CommentAPITests
 
             - name: Convert Coverage Format
               run: |
                   dotnet tool install --global dotnet-reportgenerator-globaltool
-                  reportgenerator -reports:"CommentAPITests/TestResults/**/coverage.cobertura.xml" -targetdir:coverage -reporttypes:"Cobertura"
+                  reportgenerator -reports:"TestResults/**/coverage.cobertura.xml" -targetdir:coverage -reporttypes:"Cobertura"
 
             - name: Upload Coverage to Artifacts
               uses: actions/upload-artifact@v3
