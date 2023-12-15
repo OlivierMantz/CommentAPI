@@ -73,10 +73,13 @@ jobs:
             - name: Test
               run: |
                   dotnet test "./CommentAPITests/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal --collect:"XPlat Code Coverage"
-            
+
+            - name: List Test Results
+              run: ls -R TestResults
+                
             - name: List Coverage Files
               run: |
-                ls TestResults
+                ls TestResults/**/
 
             - name: Convert Coverage Format
               run: |
