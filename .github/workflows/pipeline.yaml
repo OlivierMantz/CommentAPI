@@ -72,20 +72,20 @@ jobs:
 
             - name: Test
               run: |
-                  dotnet test "./CommentAPITests/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal --collect:"XPlat Code Coverage"
+                dotnet test "./CommentAPITests/bin/Release/net7.0/CommentAPITests.dll" --no-build --verbosity normal --collect:"XPlat Code Coverage"
 
-            - name: List Test Results
-              run: ls -R TestResults
-                
-            - name: List Coverage Files
+            - name: Locate and Copy Coverage Report
               run: |
-                ls TestResults/**/
+                cp $(find TestResults -name 'coverage.cobertura.xml') coverage/coverage.cobertura.xml
 
+            # - name: List Test Results
+            #   run: ls -R TestResults
+              
             - name: Convert Coverage Format
               run: |
-                  dotnet tool install --global dotnet-reportgenerator-globaltool
-                  reportgenerator -reports:"TestResults/**/coverage.cobertura.xml" -targetdir:coverage -reporttypes:"Cobertura"
-
+                dotnet tool install --global dotnet-reportgenerator-globaltool
+                reportgenerator -reports:coverage/coverage.cobertura.xml -targetdir:coverage -reporttypes:"Cobertura"
+            
             - name: Upload Coverage to Artifacts
               uses: actions/upload-artifact@v3
               with:
