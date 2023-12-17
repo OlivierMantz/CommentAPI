@@ -121,6 +121,9 @@ jobs:
             with:
               name: code-coverage
               path: ./CommentAPITests/
+          
+          - name: Checking downloaded artifact
+            run: ls -la ./CommentAPITests/
 
           - name: Setup .NET Core SDK
             uses: actions/setup-dotnet@v2
