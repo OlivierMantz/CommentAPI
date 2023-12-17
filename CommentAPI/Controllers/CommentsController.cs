@@ -40,9 +40,9 @@ public class CommentsController : ControllerBase
 
     [Authorize(Roles = "Admin")]
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetComments()
+    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsAsync()
     {
-        var comments = await _commentService.GetCommentsAsync();
+        var comments = await _commentService.GetAllCommentsAsync();
         var commentDtos = comments.Select(CommentToDto).ToList();
         return Ok(commentDtos);
     }
@@ -56,8 +56,8 @@ public class CommentsController : ControllerBase
     }
 
     [Authorize(Roles = "User, Admin")]
-    [HttpPost("post/{postId:long}")]
-    public async Task<IActionResult> CreateComment(long postId, [FromBody]  CreateCommentDTO createCommentDTO)
+    [HttpPost("post/{postId}")]
+    public async Task<IActionResult> CreateCommentAsync(long postId, [FromBody] CreateCommentDTO createCommentDTO)
     {
         if (string.IsNullOrEmpty(createCommentDTO.Content) || postId <= 0)
         {
@@ -87,6 +87,10 @@ public class CommentsController : ControllerBase
         return Ok(createdCommentDto);
     }
 
+    // PUT
+
+
+    //DELETE api/Comments/3
     [Authorize(Roles = "User, Admin")]
     [HttpDelete("{id:long}")]
     public async Task<IActionResult> DeleteComment(long id)
