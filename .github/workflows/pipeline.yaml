@@ -127,9 +127,7 @@ jobs:
           uses: actions/download-artifact@v3
           with:
             name: code-coverage
-            path: .
-  
-        
+            path: .  
 
         - name: Install SonarScanner
           run: |
@@ -144,6 +142,9 @@ jobs:
           run: |
             dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./*/*.coverage.cobertura.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css"
     
+        - name: Restore NuGet packages
+          run: dotnet restore  
+
         - name: Build
           run: dotnet build --configuration Release --no-restore
     
