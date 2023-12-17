@@ -40,6 +40,9 @@ jobs:
 
             - name: Restore Test Dependencies
               run: dotnet restore "./CommentAPITests/CommentAPITests.csproj"
+              
+            - name: Restore NuGet Packages
+              run: dotnet restore
 
             - name: Build
               run: dotnet build --configuration Release --no-restore
@@ -108,7 +111,7 @@ jobs:
                   
     sonarcloud_analysis:
       needs: test
-      runs-on: windows-latest  # Changed to windows-latest for JDK 17 setup
+      runs-on: windows-latest
       steps:
         - name: Set up JDK 17
           uses: actions/setup-java@v3
@@ -116,10 +119,16 @@ jobs:
             java-version: 17
             distribution: 'zulu'
     
-        - uses: actions/checkout@v3
+        - name: Checkout code
+          uses: actions/checkout@v3
           with:
             fetch-depth: 0
-    
+        - name: Download Code Coverage Results
+          uses: actions/download-artifact@v3
+          with:
+            name: code-coverage
+            path: .
+  
         - name: Cache SonarCloud packages
           uses: actions/cache@v3
           with:
@@ -150,9 +159,15 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          shell: powershell
           run: |
-            .\.sonar\scanner\dotnet-sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./CommentAPITests/coverage.cobertura.xml"
-            dotnet build
-            dotnet test ./CommentAPITests/CommentAPITests.csproj --no-build --verbosity detailed /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
-            .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+            dotnet-sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${SONAR_TOKEN}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage.cobertura.xml" /d:sonar.coverage.exclusions="**Tests*.cs" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css"
+  
+        - name: Build
+          run: dotnet build --configuration Release --no-restore
+
+        - name: End SonarCloud Scan
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          run: |
+            dotnet-sonarscanner end /d:sonar.login="${SONAR_TOKEN}"
+  
