@@ -107,7 +107,7 @@ jobs:
                   context: .
                   file: ./CommentAPI/Dockerfile
                   push: true
-                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/comment_api:dev_auth
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/comment_api:main
                   
     sonarcloud_analysis:
       needs: test
