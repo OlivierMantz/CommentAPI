@@ -132,7 +132,7 @@ jobs:
         - name: List contents of the directory
           run: |
             echo "Listing contents of the downloaded artifacts directory:"
-            ls -la
+            ls 
             echo "***"
             ls ./CommentAPITests/
 
@@ -140,6 +140,8 @@ jobs:
           run: |
             echo "Printing the contents of coverage.cobertura.xml:"
             cat ./coverage.cobertura.xml || echo "Coverage file not found."
+          shell: bash
+
 
         - name: Install SonarScanner
           run: |
