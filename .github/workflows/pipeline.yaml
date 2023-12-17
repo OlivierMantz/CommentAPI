@@ -35,15 +35,6 @@ jobs:
               with:
                   dotnet-version: "7.0.x"
 
-            - name: Install Sonar
-              run: dotnet tool install --global dotnet-sonarscanner
-        
-            - name: Run SonarScanner
-              run: |
-                echo "Adding .NET global tools to PATH..."
-                echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
-                dotnet-sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage.cobertura.xml" /d:sonar.coverage.exclusions="**Tests*.cs" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css"            
-           
             - name: Restore Dependencies
               run: dotnet restore "./CommentAPI/CommentAPI.csproj"
 
@@ -150,7 +141,16 @@ jobs:
           with:
             path: .\.sonar\scanner
             key: ${{ runner.os }}-sonar-scanner
-    
+
+        - name: Install Sonar
+          run: dotnet tool install --global dotnet-sonarscanner
+      
+        - name: Run SonarScanner
+          run: |
+            echo "Adding .NET global tools to PATH..."
+            echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage.cobertura.xml" /d:sonar.coverage.exclusions="**Tests*.cs" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css"            
+                
         - name: Install SonarCloud scanner
           if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
           shell: powershell
@@ -169,8 +169,8 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: |
-            dotnet-sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${SONAR_TOKEN}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage.cobertura.xml" /d:sonar.coverage.exclusions="**Tests*.cs" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css"
-  
+            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${SONAR_TOKEN}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage.cobertura.xml" /d:sonar.coverage.exclusions="**Tests*.cs" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css"
+            
         - name: Build
           run: dotnet build --configuration Release --no-restore
 
@@ -178,5 +178,4 @@ jobs:
           env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: |
-            dotnet-sonarscanner end /d:sonar.login="${SONAR_TOKEN}"
-  
+            dotnet sonarscanner end /d:sonar.login="${SONAR_TOKEN}"  
