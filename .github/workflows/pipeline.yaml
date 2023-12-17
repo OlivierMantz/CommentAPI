@@ -39,7 +39,7 @@ jobs:
               run: dotnet tool install --global dotnet-sonarscanner
         
             - name: Run SonarScanner
-              run: dotnet-sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${SONAR_TOKEN}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage.cobertura.xml" /d:sonar.coverage.exclusions="**Tests*.cs" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css"
+              run: dotnet-sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage.cobertura.xml" /d:sonar.coverage.exclusions="**Tests*.cs" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css"            
             
             - name: Restore Dependencies
               run: dotnet restore "./CommentAPI/CommentAPI.csproj"
