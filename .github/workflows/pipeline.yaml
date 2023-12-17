@@ -129,6 +129,18 @@ jobs:
             name: code-coverage
             path: .  
 
+        - name: List contents of the directory
+          run: |
+            echo "Listing contents of the downloaded artifacts directory:"
+            ls -la
+            echo "***"
+            ls ./CommentAPITests/
+
+        - name: Print the contents of the coverage report
+          run: |
+            echo "Printing the contents of coverage.cobertura.xml:"
+            cat ./coverage.cobertura.xml || echo "Coverage file not found."
+
         - name: Install SonarScanner
           run: |
             dotnet tool install --global dotnet-sonarscanner
