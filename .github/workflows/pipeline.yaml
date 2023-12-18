@@ -110,6 +110,10 @@ jobs:
           with:
             fetch-depth: 0
     
+        - name: Install `dotnet-cover`
+          run: |
+            dotnet tool install --global dotnet-cover
+    
         - name: Install SonarScanner
           run: |
             dotnet tool install --global dotnet-sonarscanner
@@ -124,7 +128,7 @@ jobs:
             dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" \
               /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
               /d:sonar.host.url="https://sonarcloud.io" \
-              /d:sonar.coverageReportPaths=./CommentAPITests/TestResults/**/coverage.cobertura.xml \
+              /d:sonar.coverageReportPaths=./path/to/dotnet-cover/report.xml \
               /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" \
               /d:sonar.verbose=true
     
@@ -134,13 +138,16 @@ jobs:
         - name: Build
           run: dotnet build --configuration Release --no-restore
     
+        - name: Run Tests with `dotnet-cover`
+          run: |
+            # Replace with the appropriate command to run tests with dotnet-cover
+            # Example: dotnet-cover test
+    
         - name: End SonarCloud Scan
           env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: |
             dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-            
-
 
     publish_to_dockerhub:
       needs: [test]
