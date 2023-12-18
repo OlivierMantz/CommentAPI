@@ -85,7 +85,7 @@ jobs:
           uses: actions/upload-artifact@v3
           with:
             name: code-coverage
-            path: ./coverage.opencover.xml
+            path: ./CommentAPITests/TestResults/**/coverage.opencover.xml
           
     publish_to_dockerhub:
         needs: [test]
@@ -126,7 +126,7 @@ jobs:
           uses: actions/download-artifact@v3
           with:
             name: code-coverage
-            path: .
+            path: coverage-report
           
         - name: List contents of the directory
           run: |
@@ -153,7 +153,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: |
-            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
+            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-report/coverage.opencover.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
               
         - name: Restore NuGet packages
           run: dotnet restore  
