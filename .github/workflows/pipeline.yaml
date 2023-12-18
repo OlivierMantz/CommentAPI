@@ -73,24 +73,18 @@ jobs:
             name: built-app
             path: .
     
-        - name: Restore Dependencies
-          run: |
-            dotnet restore "./CommentAPI/CommentAPI.csproj"
-            dotnet restore "./CommentAPITests/CommentAPITests.csproj"
+        - name: Install dotnet-coverage
+          run: dotnet tool install --global dotnet-coverage
     
-        - name: Install `dotnet-cover`
-          run: |
-            dotnet tool install --global dotnet-cover
-    
-        - name: Run Tests with `dotnet-cover`
-          run: |
-            dotnet-cover test --output:./dotCover.Output.html
+        - name: Run Tests with dotnet-coverage
+          run: dotnet-coverage collect 'dotnet test ./CommentAPITests/CommentAPITests.csproj --no-build' --format opencover
     
         - name: Upload Coverage Report as Artifact
           uses: actions/upload-artifact@v3
           with:
             name: code-coverage
-            path: ./dotCover.Output.html
+            path: coverage.opencover.xml
+                      
           
     
                   
@@ -109,43 +103,31 @@ jobs:
           with:
             fetch-depth: 0
     
-        - name: Install `dotnet-cover`
-          run: |
-            dotnet tool install --global dotnet-cover
+        - name: Download Code Coverage Results
+          uses: actions/download-artifact@v3
+          with:
+            name: code-coverage
+            path: coverage-report
     
         - name: Install SonarScanner
-          run: |
-            dotnet tool install --global dotnet-sonarscanner
-            echo "Adding .NET global tools to PATH..."
-            echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+          run: dotnet tool install --global dotnet-sonarscanner
     
         - name: Begin SonarCloud Scan
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          run: |
-            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" \
-              /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
-              /d:sonar.host.url="https://sonarcloud.io" \
-              /d:sonar.coverageReportPaths=./path/to/dotnet-cover/report.xml \
-              /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" \
-              /d:sonar.verbose=true
+          run: dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-report/coverage.opencover.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
     
         - name: Restore NuGet packages
-          run: dotnet restore
+          run: dotnet restore  
     
         - name: Build
           run: dotnet build --configuration Release --no-restore
     
-        - name: Run Tests with `dotnet-cover`
-          run: |
-            dotnet-cover test
-    
         - name: End SonarCloud Scan
           env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          run: |
-            dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
     publish_to_dockerhub:
       needs: [test]
