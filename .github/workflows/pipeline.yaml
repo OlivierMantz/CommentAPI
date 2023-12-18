@@ -77,7 +77,14 @@ jobs:
           run: dotnet test ./CommentAPITests/CommentAPITests.csproj --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
                   
         - name: Print Current Working Directory
-          run: ls /home/runner/work/CommentAPI/CommentAPI/CommentAPITests/
+          run: |
+              ls /home/runner/work/CommentAPI/CommentAPI/CommentAPITests/
+              echo "***"
+              ls -R ./CommentAPITests/TestResults
+              echo "***"
+              ls -R ./CommentAPITests/TestResults/**/coverage.opencover.xml
+              echo "***"
+
   
         - name: Upload Coverage Report as Artifact
           uses: actions/upload-artifact@v3
@@ -149,7 +156,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: |
-            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-report/coverage.opencover.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
+            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-report/coverage.opencover.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
               
         - name: Restore NuGet packages
           run: dotnet restore  
