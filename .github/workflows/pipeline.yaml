@@ -61,38 +61,85 @@ jobs:
       steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
-    
+
         - name: Setup .NET Core SDK
           uses: actions/setup-dotnet@v2
           with:
             dotnet-version: "7.0.x"
-    
-        - name: Setup Java for SonarCloud
-          uses: actions/setup-java@v2
-          with:
-            java-version: '17'
-            distribution: 'zulu'
-    
+
         - name: Download Build Artifacts
           uses: actions/download-artifact@v3
           with:
             name: built-app
             path: .
 
+        - name: Test and Collect Coverage
+          run: dotnet test ./CommentAPITests/CommentAPITests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/
+                            
+        - name: Print Current Working Directory
+          run: |
+              ls /home/runner/work/CommentAPI/CommentAPI/CommentAPITests/
+              echo "***"
+              ls -R ./CommentAPITests/TestResults
+              echo "***"
+              ls -R ./CommentAPITests/TestResults/**/coverage.opencover.xml
+              echo "***"
+              cat ./CommentAPITests/TestResults/**/coverage.opencover.xml || echo "Coverage file not found."
+
+  
+        - name: Upload Coverage Report as Artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: code-coverage
+            path: ./CommentAPITests/TestResults/**/coverage.opencover.xml
+          
+    
+                  
+    sonarcloud_analysis:
+      needs: test
+      runs-on: windows-latest
+      steps:
+        - name: Set up JDK 17
+          uses: actions/setup-java@v3
+          with:
+            java-version: 17
+            distribution: 'zulu'
+    
+        - name: Checkout code
+          uses: actions/checkout@v3
+          with:
+            fetch-depth: 0
+    
         - name: Install SonarScanner
           run: |
             dotnet tool install --global dotnet-sonarscanner
+            echo "Adding .NET global tools to PATH..."
             echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
-  
-        - name: SonarCloud Analysis with Code Coverage
+    
+        - name: Begin SonarCloud Scan
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: |
-            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI"  \
+            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" \
               /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
-              /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html 
-            dotnet build –no-incremental
-            dotnet dotcover test --dcReportType=HTML
-            dotnet sonarscanner end /d:sonar.token=""${{ secrets.SONAR_TOKEN }}"
-          shell: bash            
+              /d:sonar.host.url="https://sonarcloud.io" \
+              /d:sonar.coverageReportPaths=./CommentAPITests/TestResults/**/coverage.cobertura.xml \
+              /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" \
+              /d:sonar.verbose=true
+    
+        - name: Restore NuGet packages
+          run: dotnet restore
+    
+        - name: Build
+          run: dotnet build --configuration Release --no-restore
+    
+        - name: End SonarCloud Scan
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          run: |
+            dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+            
 
 
     publish_to_dockerhub:
