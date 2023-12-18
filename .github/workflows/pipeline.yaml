@@ -129,9 +129,8 @@ jobs:
         - name: List contents of the directory
           run: |
             echo "Listing contents of the downloaded artifacts directory:"
-            ls 
+            ls coverage-report
             echo "***"
-            ls CommentAPITests
 
         - name: Print the contents of the coverage report
           run: |
