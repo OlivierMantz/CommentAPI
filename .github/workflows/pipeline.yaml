@@ -71,7 +71,7 @@ jobs:
           env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: |
-            dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}" end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+            dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
     test:
       needs: build
