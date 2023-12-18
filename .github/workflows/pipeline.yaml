@@ -92,7 +92,7 @@ jobs:
             dotnet build –no-incremental
             dotnet dotcover test --dcReportType=HTML
             dotnet sonarscanner end /d:sonar.token=""${{ secrets.SONAR_TOKEN }}"
-            shell: bash            
+          shell: bash            
 
 
     publish_to_dockerhub:
