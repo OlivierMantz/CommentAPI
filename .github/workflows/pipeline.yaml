@@ -74,9 +74,8 @@ jobs:
             path: .
 
         - name: Test and Collect Coverage
-          run: |
-            dotnet test ./CommentAPITests/CommentAPITests.csproj --verbosity detailed /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
-        
+          run: dotnet test ./CommentAPITests/CommentAPITests.csproj --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+                  
         - name: Print Current Working Directory
           run: |
             echo "***"
@@ -86,8 +85,8 @@ jobs:
           uses: actions/upload-artifact@v3
           with:
             name: code-coverage
-            path: ./CommentAPITests/coverage.cobertura.xml
-
+            path: ./coverage.opencover.xml
+          
     publish_to_dockerhub:
         needs: [test]
         runs-on: ubuntu-latest
@@ -127,8 +126,8 @@ jobs:
           uses: actions/download-artifact@v3
           with:
             name: code-coverage
-            path: .  
-
+            path: .
+          
         - name: List contents of the directory
           run: |
             echo "Listing contents of the downloaded artifacts directory:"
@@ -154,8 +153,8 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: |
-            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage.cobertura.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
-    
+            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
+              
         - name: Restore NuGet packages
           run: dotnet restore  
 
