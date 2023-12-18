@@ -78,16 +78,21 @@ jobs:
           with:
             name: built-app
             path: .
-    
+
+        - name: Install SonarScanner
+          run: |
+            dotnet tool install --global dotnet-sonarscanner
+            echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+  
         - name: SonarCloud Analysis with Code Coverage
           run: |
-            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" \
+            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI"  \
               /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
               /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html 
             dotnet build –no-incremental
             dotnet dotcover test --dcReportType=HTML
             dotnet sonarscanner end /d:sonar.token=""${{ secrets.SONAR_TOKEN }}"
-                                    
+            shell: bash            
 
 
     publish_to_dockerhub:
