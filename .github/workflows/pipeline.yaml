@@ -77,17 +77,16 @@ jobs:
           run: dotnet tool install --global dotnet-coverage
     
         - name: Run Tests with dotnet-coverage
-          run: dotnet-coverage collect 'dotnet test ./CommentAPITests/CommentAPITests.csproj --no-build' --format opencover
+          run: dotnet-coverage collect 'dotnet test ./CommentAPITests/CommentAPITests.csproj --no-build' -f xml -o coverage.xml
     
         - name: Upload Coverage Report as Artifact
           uses: actions/upload-artifact@v3
           with:
             name: code-coverage
-            path: coverage.opencover.xml
+            path: coverage.xml
                       
           
     
-                  
     sonarcloud_analysis:
       needs: test
       runs-on: windows-latest
@@ -116,7 +115,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          run: dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-report/coverage.opencover.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
+          run: dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths="coverage-report/coverage.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
     
         - name: Restore NuGet packages
           run: dotnet restore  
@@ -128,6 +127,9 @@ jobs:
           env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+                  
+
 
     publish_to_dockerhub:
       needs: [test]
