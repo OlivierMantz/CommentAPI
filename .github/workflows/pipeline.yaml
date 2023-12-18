@@ -83,7 +83,7 @@ jobs:
           uses: actions/upload-artifact@v3
           with:
             name: code-coverage
-            path: /TestResults/**/coverage.opencover.xml
+            path: ./CommentAPITests/TestResults/**/coverage.opencover.xml
           
     publish_to_dockerhub:
         needs: [test]
