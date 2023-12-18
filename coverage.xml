@@ -1,0 +1,986 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<results>
+  <modules>
+    <module id="B6F8314F3E21DE4A864ABB8720BC13C62F246EC9" name="CommentAPI.dll" path="CommentAPI.dll" block_coverage="58.16" line_coverage="50.62" blocks_covered="196" blocks_not_covered="141" lines_covered="122" lines_partially_covered="2" lines_not_covered="117">
+      <functions>
+        <function id="8356" token="0x6000006" name="&lt;Main&gt;$(string[])" type_name="Program" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="42" lines_covered="0" lines_partially_covered="0" lines_not_covered="39">
+          <ranges>
+            <range source_id="0" start_line="14" end_line="14" start_column="1" end_column="73" covered="no" />
+            <range source_id="0" start_line="16" end_line="16" start_column="1" end_column="50" covered="no" />
+            <range source_id="0" start_line="17" end_line="17" start_column="1" end_column="35" covered="no" />
+            <range source_id="0" start_line="19" end_line="19" start_column="1" end_column="77" covered="no" />
+            <range source_id="0" start_line="21" end_line="22" start_column="1" end_column="87" covered="no" />
+            <range source_id="0" start_line="25" end_line="25" start_column="1" end_column="69" covered="no" />
+            <range source_id="0" start_line="26" end_line="26" start_column="1" end_column="63" covered="no" />
+            <range source_id="0" start_line="29" end_line="29" start_column="1" end_column="35" covered="no" />
+            <range source_id="0" start_line="31" end_line="31" start_column="1" end_column="44" covered="no" />
+            <range source_id="0" start_line="32" end_line="32" start_column="1" end_column="34" covered="no" />
+            <range source_id="0" start_line="34" end_line="45" start_column="1" end_column="4" covered="no" />
+            <range source_id="0" start_line="48" end_line="48" start_column="1" end_column="27" covered="no" />
+            <range source_id="0" start_line="50" end_line="50" start_column="1" end_column="15" covered="no" />
+            <range source_id="0" start_line="52" end_line="52" start_column="1" end_column="71" covered="no" />
+            <range source_id="0" start_line="53" end_line="53" start_column="1" end_column="2" covered="no" />
+            <range source_id="0" start_line="54" end_line="54" start_column="5" end_column="26" covered="no" />
+            <range source_id="0" start_line="55" end_line="55" start_column="1" end_column="2" covered="no" />
+            <range source_id="0" start_line="58" end_line="58" start_column="1" end_column="19" covered="no" />
+            <range source_id="0" start_line="63" end_line="63" start_column="1" end_column="18" covered="no" />
+            <range source_id="0" start_line="64" end_line="64" start_column="1" end_column="20" covered="no" />
+            <range source_id="0" start_line="67" end_line="67" start_column="1" end_column="27" covered="no" />
+            <range source_id="0" start_line="69" end_line="69" start_column="1" end_column="25" covered="no" />
+            <range source_id="0" start_line="70" end_line="70" start_column="1" end_column="24" covered="no" />
+            <range source_id="0" start_line="72" end_line="72" start_column="1" end_column="22" covered="no" />
+            <range source_id="0" start_line="75" end_line="75" start_column="1" end_column="11" covered="no" />
+            <range source_id="0" start_line="77" end_line="77" start_column="1" end_column="53" covered="no" />
+            <range source_id="0" start_line="78" end_line="78" start_column="1" end_column="34" covered="no" />
+          </ranges>
+        </function>
+        <function id="8740" token="0x6000008" name="&lt;&lt;Main&gt;$&gt;g__CreateDB|0_2(Microsoft.AspNetCore.Builder.WebApplication)" type_name="Program" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="1" lines_covered="0" lines_partially_covered="0" lines_not_covered="2">
+          <ranges>
+            <range source_id="0" start_line="84" end_line="84" start_column="1" end_column="2" covered="no" />
+            <range source_id="0" start_line="86" end_line="86" start_column="1" end_column="2" covered="no" />
+          </ranges>
+        </function>
+        <function id="8744" token="0x6000009" name="&lt;&lt;Main&gt;$&gt;g__ApplyMigrations|0_3(Microsoft.AspNetCore.Builder.WebApplication)" type_name="Program" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="11" lines_covered="0" lines_partially_covered="0" lines_not_covered="8">
+          <ranges>
+            <range source_id="0" start_line="88" end_line="88" start_column="1" end_column="2" covered="no" />
+            <range source_id="0" start_line="89" end_line="89" start_column="12" end_column="50" covered="no" />
+            <range source_id="0" start_line="90" end_line="90" start_column="5" end_column="6" covered="no" />
+            <range source_id="0" start_line="91" end_line="91" start_column="9" end_column="90" covered="no" />
+            <range source_id="0" start_line="92" end_line="92" start_column="9" end_column="44" covered="no" />
+            <range source_id="0" start_line="94" end_line="94" start_column="9" end_column="38" covered="no" />
+            <range source_id="0" start_line="95" end_line="95" start_column="5" end_column="6" covered="no" />
+            <range source_id="0" start_line="96" end_line="96" start_column="1" end_column="2" covered="no" />
+          </ranges>
+        </function>
+        <function id="8840" token="0x600000a" name="&lt;&lt;Main&gt;$&gt;g__SeedDatabase|0_4(Microsoft.AspNetCore.Builder.WebApplication)" type_name="Program" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="26" lines_covered="0" lines_partially_covered="0" lines_not_covered="31">
+          <ranges>
+            <range source_id="0" start_line="98" end_line="98" start_column="1" end_column="2" covered="no" />
+            <range source_id="0" start_line="99" end_line="99" start_column="12" end_column="50" covered="no" />
+            <range source_id="0" start_line="100" end_line="100" start_column="5" end_column="6" covered="no" />
+            <range source_id="0" start_line="101" end_line="101" start_column="9" end_column="46" covered="no" />
+            <range source_id="0" start_line="102" end_line="102" start_column="9" end_column="75" covered="no" />
+            <range source_id="0" start_line="105" end_line="105" start_column="9" end_column="37" covered="no" />
+            <range source_id="0" start_line="106" end_line="106" start_column="9" end_column="10" covered="no" />
+            <range source_id="0" start_line="108" end_line="127" start_column="13" end_column="15" covered="no" />
+            <range source_id="0" start_line="128" end_line="128" start_column="13" end_column="35" covered="no" />
+            <range source_id="0" start_line="129" end_line="129" start_column="9" end_column="10" covered="no" />
+            <range source_id="0" start_line="130" end_line="130" start_column="5" end_column="6" covered="no" />
+            <range source_id="0" start_line="131" end_line="131" start_column="1" end_column="2" covered="no" />
+          </ranges>
+        </function>
+        <function id="9084" token="0x600000b" name="CommentRepository(CommentAPI.Data.ApplicationDbContext)" namespace="BackEnd.Repositories" type_name="CommentRepository" block_coverage="100.00" line_coverage="100.00" blocks_covered="2" blocks_not_covered="0" lines_covered="4" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="1" start_line="16" end_line="16" start_column="9" end_column="63" covered="yes" />
+            <range source_id="1" start_line="17" end_line="17" start_column="9" end_column="10" covered="yes" />
+            <range source_id="1" start_line="18" end_line="18" start_column="13" end_column="32" covered="yes" />
+            <range source_id="1" start_line="19" end_line="19" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="9627" token="0x6000013" name="CommentService(CommentAPI.Repositories.ICommentRepository)" namespace="CommentAPI.Services" type_name="CommentService" block_coverage="100.00" line_coverage="100.00" blocks_covered="2" blocks_not_covered="0" lines_covered="4" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="2" start_line="10" end_line="10" start_column="9" end_column="68" covered="yes" />
+            <range source_id="2" start_line="11" end_line="11" start_column="9" end_column="10" covered="yes" />
+            <range source_id="2" start_line="12" end_line="12" start_column="13" end_column="52" covered="yes" />
+            <range source_id="2" start_line="13" end_line="13" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10167" token="0x6000029" name="get_Id()" namespace="CommentAPI.Models" type_name="Comment" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="3" start_line="10" end_line="10" start_column="26" end_column="30" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10175" token="0x600002a" name="set_Id(long)" namespace="CommentAPI.Models" type_name="Comment" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="1" lines_covered="0" lines_partially_covered="0" lines_not_covered="1">
+          <ranges>
+            <range source_id="3" start_line="10" end_line="10" start_column="31" end_column="35" covered="no" />
+          </ranges>
+        </function>
+        <function id="10184" token="0x600002b" name="get_Content()" namespace="CommentAPI.Models" type_name="Comment" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="3" start_line="13" end_line="13" start_column="33" end_column="37" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10192" token="0x600002c" name="set_Content(string)" namespace="CommentAPI.Models" type_name="Comment" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="3" start_line="13" end_line="13" start_column="38" end_column="42" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10201" token="0x600002d" name="get_UserId()" namespace="CommentAPI.Models" type_name="Comment" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="3" start_line="15" end_line="15" start_column="32" end_column="36" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10209" token="0x600002e" name="set_UserId(string)" namespace="CommentAPI.Models" type_name="Comment" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="3" start_line="15" end_line="15" start_column="37" end_column="41" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10218" token="0x600002f" name="get_PostId()" namespace="CommentAPI.Models" type_name="Comment" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="3" start_line="18" end_line="18" start_column="30" end_column="34" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10226" token="0x6000030" name="set_PostId(long)" namespace="CommentAPI.Models" type_name="Comment" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="3" start_line="18" end_line="18" start_column="35" end_column="39" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10244" token="0x6000032" name="get_Id()" namespace="CommentAPI.Models.DTOs" type_name="CommentDTO" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="1" lines_covered="0" lines_partially_covered="0" lines_not_covered="1">
+          <ranges>
+            <range source_id="4" start_line="7" end_line="7" start_column="26" end_column="30" covered="no" />
+          </ranges>
+        </function>
+        <function id="10252" token="0x6000033" name="set_Id(long)" namespace="CommentAPI.Models.DTOs" type_name="CommentDTO" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="4" start_line="7" end_line="7" start_column="31" end_column="35" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10261" token="0x6000034" name="get_Content()" namespace="CommentAPI.Models.DTOs" type_name="CommentDTO" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="4" start_line="9" end_line="9" start_column="34" end_column="38" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10269" token="0x6000035" name="set_Content(string)" namespace="CommentAPI.Models.DTOs" type_name="CommentDTO" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="4" start_line="9" end_line="9" start_column="39" end_column="43" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10278" token="0x6000036" name="get_UserId()" namespace="CommentAPI.Models.DTOs" type_name="CommentDTO" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="1" lines_covered="0" lines_partially_covered="0" lines_not_covered="1">
+          <ranges>
+            <range source_id="4" start_line="11" end_line="11" start_column="32" end_column="36" covered="no" />
+          </ranges>
+        </function>
+        <function id="10286" token="0x6000037" name="set_UserId(string)" namespace="CommentAPI.Models.DTOs" type_name="CommentDTO" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="4" start_line="11" end_line="11" start_column="37" end_column="41" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10295" token="0x6000038" name="get_PostId()" namespace="CommentAPI.Models.DTOs" type_name="CommentDTO" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="4" start_line="13" end_line="13" start_column="31" end_column="35" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10303" token="0x6000039" name="set_PostId(System.Nullable&lt;long&gt;)" namespace="CommentAPI.Models.DTOs" type_name="CommentDTO" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="4" start_line="13" end_line="13" start_column="36" end_column="40" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10321" token="0x600003b" name="get_Content()" namespace="CommentAPI.Models.DTOs" type_name="CreateCommentDTO" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="5" start_line="5" end_line="5" start_column="33" end_column="37" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10329" token="0x600003c" name="set_Content(string)" namespace="CommentAPI.Models.DTOs" type_name="CreateCommentDTO" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="5" start_line="5" end_line="5" start_column="38" end_column="42" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10347" token="0x600003e" name="ApplicationDbContext(Microsoft.EntityFrameworkCore.DbContextOptions&lt;CommentAPI.Data.ApplicationDbContext&gt;)" namespace="CommentAPI.Data" type_name="ApplicationDbContext" block_coverage="100.00" line_coverage="100.00" blocks_covered="2" blocks_not_covered="0" lines_covered="3" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="6" start_line="9" end_line="9" start_column="11" end_column="24" covered="yes" />
+            <range source_id="6" start_line="10" end_line="10" start_column="5" end_column="6" covered="yes" />
+            <range source_id="6" start_line="11" end_line="11" start_column="5" end_column="6" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10358" token="0x600003f" name="get_Comments()" namespace="CommentAPI.Data" type_name="ApplicationDbContext" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="6" start_line="13" end_line="13" start_column="38" end_column="42" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10366" token="0x6000040" name="set_Comments(Microsoft.EntityFrameworkCore.DbSet&lt;CommentAPI.Models.Comment&gt;)" namespace="CommentAPI.Data" type_name="ApplicationDbContext" block_coverage="100.00" line_coverage="100.00" blocks_covered="1" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="6" start_line="13" end_line="13" start_column="43" end_column="47" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10376" token="0x6000041" name="GetCurrentUserId()" namespace="CommentAPI.Controllers" type_name="CommentsController" block_coverage="90.91" line_coverage="66.67" blocks_covered="10" blocks_not_covered="1" lines_covered="2" lines_partially_covered="1" lines_not_covered="0">
+          <ranges>
+            <range source_id="7" start_line="20" end_line="20" start_column="5" end_column="6" covered="yes" />
+            <range source_id="7" start_line="21" end_line="21" start_column="9" end_column="92" covered="partial" />
+            <range source_id="7" start_line="22" end_line="22" start_column="5" end_column="6" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10453" token="0x6000042" name="CommentsController(CommentAPI.Services.ICommentService)" namespace="CommentAPI.Controllers" type_name="CommentsController" block_coverage="100.00" line_coverage="100.00" blocks_covered="2" blocks_not_covered="0" lines_covered="4" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="7" start_line="24" end_line="24" start_column="5" end_column="62" covered="yes" />
+            <range source_id="7" start_line="25" end_line="25" start_column="5" end_column="6" covered="yes" />
+            <range source_id="7" start_line="26" end_line="26" start_column="9" end_column="42" covered="yes" />
+            <range source_id="7" start_line="27" end_line="27" start_column="5" end_column="6" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10472" token="0x6000043" name="CommentToDto(CommentAPI.Models.Comment)" namespace="CommentAPI.Controllers" type_name="CommentsController" block_coverage="100.00" line_coverage="100.00" blocks_covered="12" blocks_not_covered="0" lines_covered="10" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="7" start_line="30" end_line="30" start_column="5" end_column="6" covered="yes" />
+            <range source_id="7" start_line="31" end_line="37" start_column="9" end_column="11" covered="yes" />
+            <range source_id="7" start_line="38" end_line="38" start_column="9" end_column="27" covered="yes" />
+            <range source_id="7" start_line="39" end_line="39" start_column="5" end_column="6" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10868" token="0x6000049" name="&lt;&lt;Main&gt;$&gt;b__0(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" type_name="Program.&lt;&gt;c__DisplayClass0_0" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="4" lines_covered="0" lines_partially_covered="0" lines_not_covered="1">
+          <ranges>
+            <range source_id="0" start_line="22" end_line="22" start_column="5" end_column="85" covered="no" />
+          </ranges>
+        </function>
+        <function id="10900" token="0x600004a" name="&lt;&lt;Main&gt;$&gt;b__1(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions)" type_name="Program.&lt;&gt;c__DisplayClass0_0" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="12" lines_covered="0" lines_partially_covered="0" lines_not_covered="10">
+          <ranges>
+            <range source_id="0" start_line="36" end_line="36" start_column="1" end_column="2" covered="no" />
+            <range source_id="0" start_line="37" end_line="37" start_column="5" end_column="76" covered="no" />
+            <range source_id="0" start_line="38" end_line="38" start_column="5" end_column="64" covered="no" />
+            <range source_id="0" start_line="39" end_line="44" start_column="5" end_column="7" covered="no" />
+            <range source_id="0" start_line="45" end_line="45" start_column="1" end_column="2" covered="no" />
+          </ranges>
+        </function>
+        <function id="11052" token="0x600004f" name="MoveNext()" namespace="BackEnd.Repositories" type_name="CommentRepository.&lt;CommentExistsAsync&gt;d__8" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="15" lines_covered="0" lines_partially_covered="0" lines_not_covered="3">
+          <ranges>
+            <range source_id="1" start_line="72" end_line="72" start_column="9" end_column="10" covered="no" />
+            <range source_id="1" start_line="73" end_line="73" start_column="13" end_column="77" covered="no" />
+            <range source_id="1" start_line="74" end_line="74" start_column="9" end_column="10" covered="no" />
+          </ranges>
+        </function>
+        <function id="11444" token="0x6000052" name="MoveNext()" namespace="BackEnd.Repositories" type_name="CommentRepository.&lt;CreateCommentAsync&gt;d__5" block_coverage="83.33" line_coverage="75.00" blocks_covered="10" blocks_not_covered="2" lines_covered="6" lines_partially_covered="0" lines_not_covered="2">
+          <ranges>
+            <range source_id="1" start_line="39" end_line="39" start_column="9" end_column="10" covered="yes" />
+            <range source_id="1" start_line="40" end_line="40" start_column="13" end_column="33" covered="yes" />
+            <range source_id="1" start_line="41" end_line="41" start_column="13" end_column="14" covered="no" />
+            <range source_id="1" start_line="42" end_line="42" start_column="17" end_column="66" covered="no" />
+            <range source_id="1" start_line="45" end_line="45" start_column="13" end_column="55" covered="yes" />
+            <range source_id="1" start_line="46" end_line="46" start_column="13" end_column="47" covered="yes" />
+            <range source_id="1" start_line="48" end_line="48" start_column="13" end_column="28" covered="yes" />
+            <range source_id="1" start_line="49" end_line="49" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="11856" token="0x6000055" name="MoveNext()" namespace="BackEnd.Repositories" type_name="CommentRepository.&lt;DeleteCommentAsync&gt;d__7" block_coverage="92.31" line_coverage="88.89" blocks_covered="12" blocks_not_covered="1" lines_covered="8" lines_partially_covered="0" lines_not_covered="1">
+          <ranges>
+            <range source_id="1" start_line="59" end_line="59" start_column="9" end_column="10" covered="yes" />
+            <range source_id="1" start_line="60" end_line="60" start_column="13" end_column="65" covered="yes" />
+            <range source_id="1" start_line="61" end_line="61" start_column="13" end_column="33" covered="yes" />
+            <range source_id="1" start_line="62" end_line="62" start_column="13" end_column="14" covered="yes" />
+            <range source_id="1" start_line="63" end_line="63" start_column="17" end_column="51" covered="yes" />
+            <range source_id="1" start_line="64" end_line="64" start_column="17" end_column="65" covered="yes" />
+            <range source_id="1" start_line="65" end_line="65" start_column="17" end_column="36" covered="yes" />
+            <range source_id="1" start_line="68" end_line="68" start_column="13" end_column="26" covered="no" />
+            <range source_id="1" start_line="69" end_line="69" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="12356" token="0x6000058" name="MoveNext()" namespace="BackEnd.Repositories" type_name="CommentRepository.&lt;GetAllCommentsAsync&gt;d__3" block_coverage="100.00" line_coverage="100.00" blocks_covered="5" blocks_not_covered="0" lines_covered="3" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="1" start_line="27" end_line="27" start_column="9" end_column="10" covered="yes" />
+            <range source_id="1" start_line="28" end_line="28" start_column="13" end_column="58" covered="yes" />
+            <range source_id="1" start_line="29" end_line="29" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="12592" token="0x600005b" name="MoveNext()" namespace="BackEnd.Repositories" type_name="CommentRepository.&lt;GetAllCommentsInPostAsync&gt;d__4" block_coverage="100.00" line_coverage="100.00" blocks_covered="16" blocks_not_covered="0" lines_covered="5" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="1" start_line="32" end_line="32" start_column="9" end_column="10" covered="yes" />
+            <range source_id="1" start_line="33" end_line="35" start_column="13" end_column="49" covered="yes" />
+            <range source_id="1" start_line="36" end_line="36" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="12988" token="0x600005e" name="MoveNext()" namespace="BackEnd.Repositories" type_name="CommentRepository.&lt;GetCommentByIdAsync&gt;d__2" block_coverage="100.00" line_coverage="100.00" blocks_covered="15" blocks_not_covered="0" lines_covered="3" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="1" start_line="22" end_line="22" start_column="9" end_column="10" covered="yes" />
+            <range source_id="1" start_line="23" end_line="23" start_column="13" end_column="81" covered="yes" />
+            <range source_id="1" start_line="24" end_line="24" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="13380" token="0x6000061" name="MoveNext()" namespace="BackEnd.Repositories" type_name="CommentRepository.&lt;PutCommentAsync&gt;d__6" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="7" lines_covered="0" lines_partially_covered="0" lines_not_covered="5">
+          <ranges>
+            <range source_id="1" start_line="52" end_line="52" start_column="9" end_column="10" covered="no" />
+            <range source_id="1" start_line="53" end_line="53" start_column="13" end_column="47" covered="no" />
+            <range source_id="1" start_line="54" end_line="54" start_column="13" end_column="61" covered="no" />
+            <range source_id="1" start_line="55" end_line="55" start_column="13" end_column="32" covered="no" />
+            <range source_id="1" start_line="56" end_line="56" start_column="9" end_column="10" covered="no" />
+          </ranges>
+        </function>
+        <function id="13656" token="0x6000064" name="MoveNext()" namespace="CommentAPI.Services" type_name="CommentService.&lt;CommentExistsAsync&gt;d__8" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="4" lines_covered="0" lines_partially_covered="0" lines_not_covered="3">
+          <ranges>
+            <range source_id="2" start_line="46" end_line="46" start_column="9" end_column="10" covered="no" />
+            <range source_id="2" start_line="47" end_line="47" start_column="13" end_column="68" covered="no" />
+            <range source_id="2" start_line="48" end_line="48" start_column="9" end_column="10" covered="no" />
+          </ranges>
+        </function>
+        <function id="13884" token="0x6000067" name="MoveNext()" namespace="CommentAPI.Services" type_name="CommentService.&lt;CreateCommentAsync&gt;d__5" block_coverage="100.00" line_coverage="100.00" blocks_covered="5" blocks_not_covered="0" lines_covered="4" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="2" start_line="30" end_line="30" start_column="9" end_column="10" covered="yes" />
+            <range source_id="2" start_line="31" end_line="31" start_column="13" end_column="66" covered="yes" />
+            <range source_id="2" start_line="32" end_line="32" start_column="13" end_column="28" covered="yes" />
+            <range source_id="2" start_line="33" end_line="33" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="14108" token="0x600006a" name="MoveNext()" namespace="CommentAPI.Services" type_name="CommentService.&lt;DeleteCommentAsync&gt;d__7" block_coverage="100.00" line_coverage="100.00" blocks_covered="4" blocks_not_covered="0" lines_covered="3" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="2" start_line="41" end_line="41" start_column="9" end_column="10" covered="yes" />
+            <range source_id="2" start_line="42" end_line="42" start_column="13" end_column="68" covered="yes" />
+            <range source_id="2" start_line="43" end_line="43" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="14336" token="0x600006d" name="MoveNext()" namespace="CommentAPI.Services" type_name="CommentService.&lt;GetAllCommentsAsync&gt;d__3" block_coverage="100.00" line_coverage="100.00" blocks_covered="4" blocks_not_covered="0" lines_covered="3" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="2" start_line="20" end_line="20" start_column="9" end_column="10" covered="yes" />
+            <range source_id="2" start_line="21" end_line="21" start_column="13" end_column="67" covered="yes" />
+            <range source_id="2" start_line="22" end_line="22" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="14556" token="0x6000070" name="MoveNext()" namespace="CommentAPI.Services" type_name="CommentService.&lt;GetAllCommentsInPostAsync&gt;d__4" block_coverage="100.00" line_coverage="100.00" blocks_covered="4" blocks_not_covered="0" lines_covered="3" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="2" start_line="25" end_line="25" start_column="9" end_column="10" covered="yes" />
+            <range source_id="2" start_line="26" end_line="26" start_column="13" end_column="79" covered="yes" />
+            <range source_id="2" start_line="27" end_line="27" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="14784" token="0x6000073" name="MoveNext()" namespace="CommentAPI.Services" type_name="CommentService.&lt;GetCommentByIdAsync&gt;d__2" block_coverage="100.00" line_coverage="100.00" blocks_covered="4" blocks_not_covered="0" lines_covered="3" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="2" start_line="15" end_line="15" start_column="9" end_column="10" covered="yes" />
+            <range source_id="2" start_line="16" end_line="16" start_column="13" end_column="69" covered="yes" />
+            <range source_id="2" start_line="17" end_line="17" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="15012" token="0x6000076" name="MoveNext()" namespace="CommentAPI.Services" type_name="CommentService.&lt;PutCommentAsync&gt;d__6" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="4" lines_covered="0" lines_partially_covered="0" lines_not_covered="3">
+          <ranges>
+            <range source_id="2" start_line="36" end_line="36" start_column="9" end_column="10" covered="no" />
+            <range source_id="2" start_line="37" end_line="37" start_column="13" end_column="70" covered="no" />
+            <range source_id="2" start_line="38" end_line="38" start_column="9" end_column="10" covered="no" />
+          </ranges>
+        </function>
+        <function id="15251" token="0x600007a" name="&lt;GetCurrentUserId&gt;b__1_0(System.Security.Claims.Claim)" namespace="CommentAPI.Controllers" type_name="CommentsController.&lt;&gt;c" block_coverage="100.00" line_coverage="100.00" blocks_covered="3" blocks_not_covered="0" lines_covered="1" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="7" start_line="21" end_line="21" start_column="48" end_column="83" covered="yes" />
+          </ranges>
+        </function>
+        <function id="15280" token="0x600007c" name="MoveNext()" namespace="CommentAPI.Controllers" type_name="CommentsController.&lt;CreateCommentAsync&gt;d__6" block_coverage="85.71" line_coverage="80.95" blocks_covered="24" blocks_not_covered="4" lines_covered="17" lines_partially_covered="0" lines_not_covered="4">
+          <ranges>
+            <range source_id="7" start_line="61" end_line="61" start_column="5" end_column="6" covered="yes" />
+            <range source_id="7" start_line="62" end_line="62" start_column="9" end_column="75" covered="yes" />
+            <range source_id="7" start_line="63" end_line="63" start_column="9" end_column="10" covered="yes" />
+            <range source_id="7" start_line="64" end_line="64" start_column="13" end_column="33" covered="yes" />
+            <range source_id="7" start_line="67" end_line="67" start_column="9" end_column="41" covered="yes" />
+            <range source_id="7" start_line="68" end_line="68" start_column="9" end_column="42" covered="yes" />
+            <range source_id="7" start_line="69" end_line="69" start_column="9" end_column="10" covered="no" />
+            <range source_id="7" start_line="70" end_line="70" start_column="13" end_column="35" covered="no" />
+            <range source_id="7" start_line="73" end_line="78" start_column="9" end_column="11" covered="yes" />
+            <range source_id="7" start_line="80" end_line="80" start_column="9" end_column="80" covered="yes" />
+            <range source_id="7" start_line="81" end_line="81" start_column="9" end_column="36" covered="yes" />
+            <range source_id="7" start_line="82" end_line="82" start_column="9" end_column="10" covered="no" />
+            <range source_id="7" start_line="83" end_line="83" start_column="13" end_column="73" covered="no" />
+            <range source_id="7" start_line="86" end_line="86" start_column="9" end_column="62" covered="yes" />
+            <range source_id="7" start_line="87" end_line="87" start_column="9" end_column="38" covered="yes" />
+            <range source_id="7" start_line="88" end_line="88" start_column="5" end_column="6" covered="yes" />
+          </ranges>
+        </function>
+        <function id="15828" token="0x600007f" name="MoveNext()" namespace="CommentAPI.Controllers" type_name="CommentsController.&lt;DeleteComment&gt;d__7" block_coverage="91.30" line_coverage="83.33" blocks_covered="21" blocks_not_covered="2" lines_covered="10" lines_partially_covered="0" lines_not_covered="2">
+          <ranges>
+            <range source_id="7" start_line="97" end_line="97" start_column="5" end_column="6" covered="yes" />
+            <range source_id="7" start_line="98" end_line="98" start_column="9" end_column="77" covered="yes" />
+            <range source_id="7" start_line="99" end_line="99" start_column="9" end_column="37" covered="yes" />
+            <range source_id="7" start_line="100" end_line="100" start_column="9" end_column="10" covered="no" />
+            <range source_id="7" start_line="101" end_line="101" start_column="13" end_column="31" covered="no" />
+            <range source_id="7" start_line="104" end_line="104" start_column="9" end_column="48" covered="yes" />
+            <range source_id="7" start_line="107" end_line="107" start_column="9" end_column="80" covered="yes" />
+            <range source_id="7" start_line="108" end_line="108" start_column="9" end_column="10" covered="yes" />
+            <range source_id="7" start_line="109" end_line="109" start_column="13" end_column="29" covered="yes" />
+            <range source_id="7" start_line="112" end_line="112" start_column="9" end_column="54" covered="yes" />
+            <range source_id="7" start_line="114" end_line="114" start_column="9" end_column="28" covered="yes" />
+            <range source_id="7" start_line="115" end_line="115" start_column="5" end_column="6" covered="yes" />
+          </ranges>
+        </function>
+        <function id="16372" token="0x6000082" name="MoveNext()" namespace="CommentAPI.Controllers" type_name="CommentsController.&lt;GetAllCommentsAsync&gt;d__4" block_coverage="100.00" line_coverage="100.00" blocks_covered="12" blocks_not_covered="0" lines_covered="5" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="7" start_line="44" end_line="44" start_column="5" end_column="6" covered="yes" />
+            <range source_id="7" start_line="45" end_line="45" start_column="9" end_column="68" covered="yes" />
+            <range source_id="7" start_line="46" end_line="46" start_column="9" end_column="66" covered="yes" />
+            <range source_id="7" start_line="47" end_line="47" start_column="9" end_column="32" covered="yes" />
+            <range source_id="7" start_line="48" end_line="48" start_column="5" end_column="6" covered="yes" />
+          </ranges>
+        </function>
+        <function id="16708" token="0x6000085" name="MoveNext()" namespace="CommentAPI.Controllers" type_name="CommentsController.&lt;GetAllCommentsInPost&gt;d__5" block_coverage="83.33" line_coverage="80.00" blocks_covered="10" blocks_not_covered="2" lines_covered="4" lines_partially_covered="1" lines_not_covered="0">
+          <ranges>
+            <range source_id="7" start_line="52" end_line="52" start_column="5" end_column="6" covered="yes" />
+            <range source_id="7" start_line="53" end_line="53" start_column="9" end_column="80" covered="yes" />
+            <range source_id="7" start_line="54" end_line="54" start_column="9" end_column="66" covered="partial" />
+            <range source_id="7" start_line="55" end_line="55" start_column="9" end_column="32" covered="yes" />
+            <range source_id="7" start_line="56" end_line="56" start_column="5" end_column="6" covered="yes" />
+          </ranges>
+        </function>
+      </functions>
+      <source_files>
+        <source_file id="0" path="C:\Users\olman\source\repos\CommentAPI\CommentAPI\Program.cs" checksum_type="SHA256" checksum="20942C73C93C0E9819F390AA2A96E34CBE14B1AEAE9198F87AC512DF87A1D8E2" />
+        <source_file id="1" path="C:\Users\olman\source\repos\CommentAPI\CommentAPI\Repositories\CommentRepository.cs" checksum_type="SHA256" checksum="5EB232DEE160E17CF7292C3A6ED77017D6F72DD6F60E3B9059E78759BBB0C1F2" />
+        <source_file id="2" path="C:\Users\olman\source\repos\CommentAPI\CommentAPI\Services\CommentService.cs" checksum_type="SHA256" checksum="3D3832676DFBD9248EBED8EB556E4B45AE8BC43E9C55398A5444A3E91AC8C250" />
+        <source_file id="3" path="C:\Users\olman\source\repos\CommentAPI\CommentAPI\Models\Comment.cs" checksum_type="SHA256" checksum="2D83B34D124FDFB003816CEFBC8D28C0C86FE82C2DA67F85A1012FAA1091A68A" />
+        <source_file id="4" path="C:\Users\olman\source\repos\CommentAPI\CommentAPI\Models\DTOs\CommentDTO.cs" checksum_type="SHA256" checksum="7B3431AB2ED51B899374960C52E1BBA2F8C45E4995CDF4489EF86343292F4680" />
+        <source_file id="5" path="C:\Users\olman\source\repos\CommentAPI\CommentAPI\Models\DTOs\CreateCommentDTO.cs" checksum_type="SHA256" checksum="7354456AE0451483596CE13006E8710BC4131769CC14333F5E5F895F4E2395DE" />
+        <source_file id="6" path="C:\Users\olman\source\repos\CommentAPI\CommentAPI\Data\ApplicationDbContext.cs" checksum_type="SHA256" checksum="6EAE83D9C9C140AB89A735B179BB7EEA7266676810C30E77D699EA4696047093" />
+        <source_file id="7" path="C:\Users\olman\source\repos\CommentAPI\CommentAPI\Controllers\CommentsController.cs" checksum_type="SHA256" checksum="E6D99BFE160E986012BCAAF926BE2C65DEA4BC857320DADAC1798D794D4D1958" />
+      </source_files>
+      <skipped_functions />
+    </module>
+    <module id="C962827ACDD62347ACD28FC87988F9B409BB05FF" name="CommentAPITests.dll" path="CommentAPITests.dll" block_coverage="100.00" line_coverage="100.00" blocks_covered="222" blocks_not_covered="0" lines_covered="147" lines_partially_covered="0" lines_not_covered="0">
+      <functions>
+        <function id="8368" token="0x6000008" name="CreateNewContextOptions()" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests" block_coverage="100.00" line_coverage="100.00" blocks_covered="5" blocks_not_covered="0" lines_covered="6" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="25" end_line="25" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="27" end_line="29" start_column="13" end_column="26" covered="yes" />
+            <range source_id="0" start_line="31" end_line="31" start_column="13" end_column="28" covered="yes" />
+            <range source_id="0" start_line="32" end_line="32" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="8412" token="0x6000009" name="PopulateTestData(CommentAPI.Data.ApplicationDbContext)" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests" block_coverage="100.00" line_coverage="100.00" blocks_covered="20" blocks_not_covered="0" lines_covered="11" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="35" end_line="35" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="36" end_line="42" start_column="13" end_column="15" covered="yes" />
+            <range source_id="0" start_line="44" end_line="44" start_column="13" end_column="49" covered="yes" />
+            <range source_id="0" start_line="45" end_line="45" start_column="13" end_column="35" covered="yes" />
+            <range source_id="0" start_line="46" end_line="46" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="8620" token="0x600000a" name="MockUserAuthentication(CommentAPI.Controllers.CommentsController, string, string)" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests" block_coverage="100.00" line_coverage="100.00" blocks_covered="23" blocks_not_covered="0" lines_covered="18" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="49" end_line="49" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="50" end_line="53" start_column="13" end_column="15" covered="yes" />
+            <range source_id="0" start_line="55" end_line="55" start_column="13" end_column="45" covered="yes" />
+            <range source_id="0" start_line="56" end_line="56" start_column="13" end_column="14" covered="yes" />
+            <range source_id="0" start_line="57" end_line="57" start_column="17" end_column="62" covered="yes" />
+            <range source_id="0" start_line="58" end_line="58" start_column="13" end_column="14" covered="yes" />
+            <range source_id="0" start_line="60" end_line="60" start_column="13" end_column="71" covered="yes" />
+            <range source_id="0" start_line="61" end_line="61" start_column="13" end_column="65" covered="yes" />
+            <range source_id="0" start_line="63" end_line="63" start_column="13" end_column="59" covered="yes" />
+            <range source_id="0" start_line="64" end_line="64" start_column="13" end_column="80" covered="yes" />
+            <range source_id="0" start_line="66" end_line="69" start_column="13" end_column="15" covered="yes" />
+            <range source_id="0" start_line="70" end_line="70" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="9472" token="0x6000018" name="MoveNext()" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests.&lt;DeleteComment_Admin&gt;d__8" block_coverage="100.00" line_coverage="100.00" blocks_covered="19" blocks_not_covered="0" lines_covered="13" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="211" end_line="211" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="212" end_line="212" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="213" end_line="213" start_column="13" end_column="67" covered="yes" />
+            <range source_id="0" start_line="214" end_line="214" start_column="13" end_column="39" covered="yes" />
+            <range source_id="0" start_line="216" end_line="216" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="217" end_line="217" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="218" end_line="218" start_column="13" end_column="69" covered="yes" />
+            <range source_id="0" start_line="220" end_line="220" start_column="13" end_column="48" covered="yes" />
+            <range source_id="0" start_line="222" end_line="222" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="224" end_line="224" start_column="13" end_column="52" covered="yes" />
+            <range source_id="0" start_line="225" end_line="225" start_column="13" end_column="78" covered="yes" />
+            <range source_id="0" start_line="226" end_line="226" start_column="13" end_column="41" covered="yes" />
+            <range source_id="0" start_line="227" end_line="227" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10196" token="0x600001b" name="MoveNext()" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests.&lt;DeleteComment_OtherUser_Forbidden&gt;d__10" block_coverage="100.00" line_coverage="100.00" blocks_covered="14" blocks_not_covered="0" lines_covered="11" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="257" end_line="257" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="258" end_line="258" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="259" end_line="259" start_column="13" end_column="67" covered="yes" />
+            <range source_id="0" start_line="261" end_line="261" start_column="13" end_column="39" covered="yes" />
+            <range source_id="0" start_line="263" end_line="263" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="264" end_line="264" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="265" end_line="265" start_column="13" end_column="69" covered="yes" />
+            <range source_id="0" start_line="267" end_line="267" start_column="13" end_column="56" covered="yes" />
+            <range source_id="0" start_line="269" end_line="269" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="271" end_line="271" start_column="13" end_column="49" covered="yes" />
+            <range source_id="0" start_line="272" end_line="272" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="10728" token="0x600001e" name="MoveNext()" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests.&lt;DeleteComment_OwnComment&gt;d__9" block_coverage="100.00" line_coverage="100.00" blocks_covered="19" blocks_not_covered="0" lines_covered="13" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="232" end_line="232" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="233" end_line="233" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="234" end_line="234" start_column="13" end_column="67" covered="yes" />
+            <range source_id="0" start_line="236" end_line="236" start_column="13" end_column="39" covered="yes" />
+            <range source_id="0" start_line="238" end_line="238" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="239" end_line="239" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="240" end_line="240" start_column="13" end_column="69" covered="yes" />
+            <range source_id="0" start_line="242" end_line="242" start_column="13" end_column="56" covered="yes" />
+            <range source_id="0" start_line="247" end_line="247" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="249" end_line="249" start_column="13" end_column="52" covered="yes" />
+            <range source_id="0" start_line="250" end_line="250" start_column="13" end_column="78" covered="yes" />
+            <range source_id="0" start_line="251" end_line="251" start_column="13" end_column="41" covered="yes" />
+            <range source_id="0" start_line="252" end_line="252" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="11452" token="0x6000021" name="MoveNext()" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests.&lt;GetAllComments_Admin&gt;d__3" block_coverage="100.00" line_coverage="100.00" blocks_covered="19" blocks_not_covered="0" lines_covered="13" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="74" end_line="74" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="75" end_line="75" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="76" end_line="76" start_column="13" end_column="67" covered="yes" />
+            <range source_id="0" start_line="77" end_line="77" start_column="13" end_column="39" covered="yes" />
+            <range source_id="0" start_line="79" end_line="79" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="80" end_line="80" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="81" end_line="81" start_column="13" end_column="69" covered="yes" />
+            <range source_id="0" start_line="83" end_line="83" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="85" end_line="85" start_column="13" end_column="65" covered="yes" />
+            <range source_id="0" start_line="87" end_line="87" start_column="13" end_column="73" covered="yes" />
+            <range source_id="0" start_line="88" end_line="88" start_column="13" end_column="93" covered="yes" />
+            <range source_id="0" start_line="89" end_line="89" start_column="13" end_column="41" covered="yes" />
+            <range source_id="0" start_line="90" end_line="90" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="12056" token="0x6000024" name="MoveNext()" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests.&lt;GetAllComments_InPost&gt;d__4" block_coverage="100.00" line_coverage="100.00" blocks_covered="19" blocks_not_covered="0" lines_covered="14" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="113" end_line="113" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="114" end_line="114" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="115" end_line="115" start_column="13" end_column="67" covered="yes" />
+            <range source_id="0" start_line="116" end_line="116" start_column="13" end_column="39" covered="yes" />
+            <range source_id="0" start_line="118" end_line="118" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="119" end_line="119" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="120" end_line="120" start_column="13" end_column="69" covered="yes" />
+            <range source_id="0" start_line="122" end_line="122" start_column="13" end_column="48" covered="yes" />
+            <range source_id="0" start_line="124" end_line="124" start_column="13" end_column="29" covered="yes" />
+            <range source_id="0" start_line="126" end_line="126" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="128" end_line="128" start_column="13" end_column="73" covered="yes" />
+            <range source_id="0" start_line="129" end_line="129" start_column="13" end_column="93" covered="yes" />
+            <range source_id="0" start_line="130" end_line="130" start_column="13" end_column="41" covered="yes" />
+            <range source_id="0" start_line="131" end_line="131" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="12672" token="0x6000027" name="MoveNext()" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests.&lt;GetAllComments_InPost_InvalidPostId_ReturnsEmpty&gt;d__5" block_coverage="100.00" line_coverage="100.00" blocks_covered="19" blocks_not_covered="0" lines_covered="13" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="136" end_line="136" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="137" end_line="137" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="138" end_line="138" start_column="13" end_column="67" covered="yes" />
+            <range source_id="0" start_line="139" end_line="139" start_column="13" end_column="39" covered="yes" />
+            <range source_id="0" start_line="141" end_line="141" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="142" end_line="142" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="143" end_line="143" start_column="13" end_column="69" covered="yes" />
+            <range source_id="0" start_line="145" end_line="145" start_column="13" end_column="48" covered="yes" />
+            <range source_id="0" start_line="147" end_line="147" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="149" end_line="149" start_column="13" end_column="73" covered="yes" />
+            <range source_id="0" start_line="150" end_line="150" start_column="13" end_column="93" covered="yes" />
+            <range source_id="0" start_line="151" end_line="151" start_column="13" end_column="42" covered="yes" />
+            <range source_id="0" start_line="152" end_line="152" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="13280" token="0x600002a" name="MoveNext()" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests.&lt;Post_CreateComment&gt;d__6" block_coverage="100.00" line_coverage="100.00" blocks_covered="49" blocks_not_covered="0" lines_covered="20" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="157" end_line="157" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="158" end_line="158" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="159" end_line="159" start_column="13" end_column="67" covered="yes" />
+            <range source_id="0" start_line="160" end_line="160" start_column="13" end_column="39" covered="yes" />
+            <range source_id="0" start_line="162" end_line="162" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="163" end_line="163" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="164" end_line="164" start_column="13" end_column="69" covered="yes" />
+            <range source_id="0" start_line="166" end_line="166" start_column="13" end_column="48" covered="yes" />
+            <range source_id="0" start_line="168" end_line="171" start_column="13" end_column="15" covered="yes" />
+            <range source_id="0" start_line="173" end_line="173" start_column="13" end_column="88" covered="yes" />
+            <range source_id="0" start_line="175" end_line="175" start_column="13" end_column="66" covered="yes" />
+            <range source_id="0" start_line="176" end_line="176" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="178" end_line="178" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="179" end_line="179" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="181" end_line="181" start_column="13" end_column="141" covered="yes" />
+            <range source_id="0" start_line="182" end_line="182" start_column="13" end_column="42" covered="yes" />
+            <range source_id="0" start_line="183" end_line="183" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+        <function id="14384" token="0x600002d" name="MoveNext()" namespace="CommentAPI.Controllers.Tests" type_name="CommentsControllerIntegrationTests.&lt;Post_CreateComment_InvalidData_ReturnsBadRequest&gt;d__7" block_coverage="100.00" line_coverage="100.00" blocks_covered="16" blocks_not_covered="0" lines_covered="15" lines_partially_covered="0" lines_not_covered="0">
+          <ranges>
+            <range source_id="0" start_line="188" end_line="188" start_column="9" end_column="10" covered="yes" />
+            <range source_id="0" start_line="189" end_line="189" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="190" end_line="190" start_column="13" end_column="67" covered="yes" />
+            <range source_id="0" start_line="191" end_line="191" start_column="13" end_column="39" covered="yes" />
+            <range source_id="0" start_line="193" end_line="193" start_column="13" end_column="68" covered="yes" />
+            <range source_id="0" start_line="194" end_line="194" start_column="13" end_column="72" covered="yes" />
+            <range source_id="0" start_line="195" end_line="195" start_column="13" end_column="69" covered="yes" />
+            <range source_id="0" start_line="197" end_line="197" start_column="13" end_column="48" covered="yes" />
+            <range source_id="0" start_line="199" end_line="202" start_column="13" end_column="15" covered="yes" />
+            <range source_id="0" start_line="203" end_line="203" start_column="13" end_column="88" covered="yes" />
+            <range source_id="0" start_line="205" end_line="205" start_column="13" end_column="53" covered="yes" />
+            <range source_id="0" start_line="206" end_line="206" start_column="9" end_column="10" covered="yes" />
+          </ranges>
+        </function>
+      </functions>
+      <source_files>
+        <source_file id="0" path="C:\Users\olman\source\repos\CommentAPI\CommentAPITests\Controllers\CommentsControllerTests.cs" checksum_type="SHA256" checksum="7B136474B691C1D221A5D6AB9AFEEAE68DF2F106C205CEBE7C8520B5BD3BFF4A" />
+      </source_files>
+      <skipped_functions>
+        <skipped_function id="8354" original_id="8354" token="0x6000006" name="Main(string[])" type_name="AutoGeneratedProgram" reason="attribute_excluded" />
+      </skipped_functions>
+    </module>
+  </modules>
+  <skipped_modules>
+    <skipped_module name="system.componentmodel.dataannotations.dll" path="system.componentmodel.dataannotations.dll" reason="no_symbols" />
+    <skipped_module name="system.formats.tar.dll" path="system.formats.tar.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.server.kestrel.transport.quic.dll" path="microsoft.aspnetcore.server.kestrel.transport.quic.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.diagnostics.healthchecks.dll" path="microsoft.aspnetcore.diagnostics.healthchecks.dll" reason="no_symbols" />
+    <skipped_module name="system.componentmodel.primitives.dll" path="system.componentmodel.primitives.dll" reason="no_symbols" />
+    <skipped_module name="system.xml.xmlserializer.dll" path="system.xml.xmlserializer.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.primitives.dll" path="microsoft.extensions.primitives.dll" reason="no_symbols" />
+    <skipped_module name="system.collections.specialized.dll" path="system.collections.specialized.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.routing.abstractions.dll" path="microsoft.aspnetcore.routing.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="system.security.cryptography.xml.dll" path="system.security.cryptography.xml.dll" reason="no_symbols" />
+    <skipped_module name="nuget.configuration.dll" path="nuget.configuration.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.mstestadapter.platformservices.interface.dll" path="microsoft.visualstudio.testplatform.mstestadapter.platformservices.interface.dll" reason="path_is_excluded" />
+    <skipped_module name="castle.core.dll" path="castle.core.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.razor.runtime.dll" path="microsoft.aspnetcore.razor.runtime.dll" reason="no_symbols" />
+    <skipped_module name="system.private.corelib.dll" path="system.private.corelib.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.serialization.json.dll" path="system.runtime.serialization.json.dll" reason="no_symbols" />
+    <skipped_module name="system.io.compression.filesystem.dll" path="system.io.compression.filesystem.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.process.dll" path="system.diagnostics.process.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.mstest.testadapter.dll" path="microsoft.visualstudio.testplatform.mstest.testadapter.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.csharp.dll" path="microsoft.csharp.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.openapi.dll" path="microsoft.openapi.dll" reason="no_symbols" />
+    <skipped_module name="sqlitepclraw.batteries_v2.dll" path="sqlitepclraw.batteries_v2.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.components.dll" path="microsoft.aspnetcore.components.dll" reason="no_symbols" />
+    <skipped_module name="system.io.memorymappedfiles.dll" path="system.io.memorymappedfiles.dll" reason="no_symbols" />
+    <skipped_module name="swashbuckle.aspnetcore.swagger.dll" path="swashbuckle.aspnetcore.swagger.dll" reason="no_symbols" />
+    <skipped_module name="system.io.compression.dll" path="system.io.compression.dll" reason="no_symbols" />
+    <skipped_module name="system.io.filesystem.primitives.dll" path="system.io.filesystem.primitives.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.numerics.dll" path="system.runtime.numerics.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.testframework.dll" path="microsoft.visualstudio.testplatform.testframework.dll" reason="path_is_excluded" />
+    <skipped_module name="system.net.httplistener.dll" path="system.net.httplistener.dll" reason="no_symbols" />
+    <skipped_module name="xunit.execution.dotnet.dll" path="xunit.execution.dotnet.dll" reason="public_key_token_is_excluded" />
+    <skipped_module name="microsoft.extensions.configuration.environmentvariables.dll" path="microsoft.extensions.configuration.environmentvariables.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.httplogging.dll" path="microsoft.aspnetcore.httplogging.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.logging.abstractions.dll" path="microsoft.extensions.logging.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.caching.abstractions.dll" path="microsoft.extensions.caching.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.tasks.dll" path="system.threading.tasks.dll" reason="no_symbols" />
+    <skipped_module name="system.collections.immutable.dll" path="system.collections.immutable.dll" reason="no_symbols" />
+    <skipped_module name="system.security.cryptography.cng.dll" path="system.security.cryptography.cng.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.templateengine.abstractions.dll" path="microsoft.templateengine.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.diagnostics.netcore.client.dll" path="microsoft.diagnostics.netcore.client.dll" reason="no_symbols" />
+    <skipped_module name="system.collections.nongeneric.dll" path="system.collections.nongeneric.dll" reason="no_symbols" />
+    <skipped_module name="system.resources.writer.dll" path="system.resources.writer.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.http.dll" path="microsoft.aspnetcore.http.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.identity.dll" path="microsoft.aspnetcore.identity.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.build.dll" path="microsoft.testplatform.build.dll" reason="path_is_excluded" />
+    <skipped_module name="system.net.webproxy.dll" path="system.net.webproxy.dll" reason="no_symbols" />
+    <skipped_module name="system.componentmodel.annotations.dll" path="system.componentmodel.annotations.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.build.nugetsdkresolver.dll" path="microsoft.build.nugetsdkresolver.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.build.tasks.core.dll" path="microsoft.build.tasks.core.dll" reason="no_symbols" />
+    <skipped_module name="system.linq.dll" path="system.linq.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.entityframeworkcore.dll" path="microsoft.entityframeworkcore.dll" reason="no_symbols" />
+    <skipped_module name="moq.dll" path="moq.dll" reason="public_key_token_is_excluded" />
+    <skipped_module name="microsoft.build.dll" path="microsoft.build.dll" reason="no_symbols" />
+    <skipped_module name="system.serviceprocess.dll" path="system.serviceprocess.dll" reason="no_symbols" />
+    <skipped_module name="system.componentmodel.eventbasedasync.dll" path="system.componentmodel.eventbasedasync.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.serialization.formatters.dll" path="system.runtime.serialization.formatters.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.handles.dll" path="system.runtime.handles.dll" reason="no_symbols" />
+    <skipped_module name="system.reflection.extensions.dll" path="system.reflection.extensions.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.interopservices.runtimeinformation.dll" path="system.runtime.interopservices.runtimeinformation.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.channels.dll" path="system.threading.channels.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.adapterutilities.dll" path="microsoft.testplatform.adapterutilities.dll" reason="path_is_excluded" />
+    <skipped_module name="system.reflection.emit.ilgeneration.dll" path="system.reflection.emit.ilgeneration.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.platformabstractions.dll" path="microsoft.testplatform.platformabstractions.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.mvc.core.dll" path="microsoft.aspnetcore.mvc.core.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.authentication.core.dll" path="microsoft.aspnetcore.authentication.core.dll" reason="no_symbols" />
+    <skipped_module name="system.io.compression.brotli.dll" path="system.io.compression.brotli.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.mstestadapter.platformservices.dll" path="microsoft.visualstudio.testplatform.mstestadapter.platformservices.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.extensions.fileproviders.physical.dll" path="microsoft.extensions.fileproviders.physical.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.fileproviders.abstractions.dll" path="microsoft.extensions.fileproviders.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="system.dll" path="system.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.dll" path="microsoft.extensions.configuration.dll" reason="no_symbols" />
+    <skipped_module name="system.text.json.dll" path="system.text.json.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.hosting.dll" path="microsoft.extensions.hosting.dll" reason="no_symbols" />
+    <skipped_module name="windowsbase.dll" path="windowsbase.dll" reason="no_symbols" />
+    <skipped_module name="newtonsoft.json.dll" path="newtonsoft.json.dll" reason="no_symbols" />
+    <skipped_module name="system.servicemodel.web.dll" path="system.servicemodel.web.dll" reason="no_symbols" />
+    <skipped_module name="system.text.regularexpressions.dll" path="system.text.regularexpressions.dll" reason="no_symbols" />
+    <skipped_module name="system.globalization.extensions.dll" path="system.globalization.extensions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualbasic.core.dll" path="microsoft.visualbasic.core.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.debug.dll" path="system.diagnostics.debug.dll" reason="no_symbols" />
+    <skipped_module name="system.io.pipes.dll" path="system.io.pipes.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.diagnosticsource.dll" path="system.diagnostics.diagnosticsource.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.dotnet.cli.utils.dll" path="microsoft.dotnet.cli.utils.dll" reason="no_symbols" />
+    <skipped_module name="system.formats.asn1.dll" path="system.formats.asn1.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.objectpool.dll" path="microsoft.extensions.objectpool.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.options.configurationextensions.dll" path="microsoft.extensions.options.configurationextensions.dll" reason="no_symbols" />
+    <skipped_module name="system.numerics.vectors.dll" path="system.numerics.vectors.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.logging.debug.dll" path="microsoft.extensions.logging.debug.dll" reason="no_symbols" />
+    <skipped_module name="system.net.primitives.dll" path="system.net.primitives.dll" reason="no_symbols" />
+    <skipped_module name="system.xml.linq.dll" path="system.xml.linq.dll" reason="no_symbols" />
+    <skipped_module name="system.globalization.calendars.dll" path="system.globalization.calendars.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.responsecompression.dll" path="microsoft.aspnetcore.responsecompression.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.cryptography.keyderivation.dll" path="microsoft.aspnetcore.cryptography.keyderivation.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.intrinsics.dll" path="system.runtime.intrinsics.dll" reason="no_symbols" />
+    <skipped_module name="system.security.cryptography.x509certificates.dll" path="system.security.cryptography.x509certificates.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.abstractions.dll" path="microsoft.aspnetcore.mvc.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.diagnostics.healthchecks.dll" path="microsoft.extensions.diagnostics.healthchecks.dll" reason="no_symbols" />
+    <skipped_module name="system.reflection.dll" path="system.reflection.dll" reason="no_symbols" />
+    <skipped_module name="system.reflection.dispatchproxy.dll" path="system.reflection.dispatchproxy.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.eventlog.messages.dll" path="system.diagnostics.eventlog.messages.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.localization.abstractions.dll" path="microsoft.extensions.localization.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.vstestconsole.translationlayer.dll" path="microsoft.testplatform.vstestconsole.translationlayer.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.net.stringtools.dll" path="microsoft.net.stringtools.dll" reason="no_symbols" />
+    <skipped_module name="vstest.console.dll" path="vstest.console.dll" reason="path_is_excluded" />
+    <skipped_module name="system.console.dll" path="system.console.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.timer.dll" path="system.threading.timer.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.logging.tracesource.dll" path="microsoft.extensions.logging.tracesource.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.responsecaching.dll" path="microsoft.aspnetcore.responsecaching.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.entityframeworkcore.relational.dll" path="microsoft.entityframeworkcore.relational.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.http.connections.dll" path="microsoft.aspnetcore.http.connections.dll" reason="no_symbols" />
+    <skipped_module name="system.security.accesscontrol.dll" path="system.security.accesscontrol.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.webencoders.dll" path="microsoft.extensions.webencoders.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.http.results.dll" path="microsoft.aspnetcore.http.results.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.logging.console.dll" path="microsoft.extensions.logging.console.dll" reason="no_symbols" />
+    <skipped_module name="system.linq.expressions.dll" path="system.linq.expressions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.http.connections.common.dll" path="microsoft.aspnetcore.http.connections.common.dll" reason="no_symbols" />
+    <skipped_module name="system.xml.xpath.xdocument.dll" path="system.xml.xpath.xdocument.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.authorization.policy.dll" path="microsoft.aspnetcore.authorization.policy.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.identitymodel.logging.dll" path="microsoft.identitymodel.logging.dll" reason="no_symbols" />
+    <skipped_module name="system.transactions.local.dll" path="system.transactions.local.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.binder.dll" path="microsoft.extensions.configuration.binder.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.logging.configuration.dll" path="microsoft.extensions.logging.configuration.dll" reason="no_symbols" />
+    <skipped_module name="system.net.servicepoint.dll" path="system.net.servicepoint.dll" reason="no_symbols" />
+    <skipped_module name="system.collections.dll" path="system.collections.dll" reason="no_symbols" />
+    <skipped_module name="system.net.requests.dll" path="system.net.requests.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.coreutilities.dll" path="microsoft.testplatform.coreutilities.dll" reason="path_is_excluded" />
+    <skipped_module name="system.componentmodel.typeconverter.dll" path="system.componentmodel.typeconverter.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.cors.dll" path="microsoft.aspnetcore.mvc.cors.dll" reason="no_symbols" />
+    <skipped_module name="dotnet.dll" path="dotnet.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.fileproviders.embedded.dll" path="microsoft.extensions.fileproviders.embedded.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.rewrite.dll" path="microsoft.aspnetcore.rewrite.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.hosting.abstractions.dll" path="microsoft.extensions.hosting.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.applicationinsights.dll" path="microsoft.applicationinsights.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.dotnet.templatelocator.dll" path="microsoft.dotnet.templatelocator.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.extensions.dll" path="system.runtime.extensions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.openapi.dll" path="microsoft.aspnetcore.openapi.dll" reason="no_symbols" />
+    <skipped_module name="system.security.cryptography.csp.dll" path="system.security.cryptography.csp.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.viewfeatures.dll" path="microsoft.aspnetcore.mvc.viewfeatures.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.tasks.extensions.dll" path="system.threading.tasks.extensions.dll" reason="no_symbols" />
+    <skipped_module name="system.appcontext.dll" path="system.appcontext.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.ratelimiting.dll" path="microsoft.aspnetcore.ratelimiting.dll" reason="no_symbols" />
+    <skipped_module name="system.private.datacontractserialization.dll" path="system.private.datacontractserialization.dll" reason="no_symbols" />
+    <skipped_module name="system.linq.queryable.dll" path="system.linq.queryable.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.fileextensions.dll" path="microsoft.extensions.configuration.fileextensions.dll" reason="no_symbols" />
+    <skipped_module name="system.valuetuple.dll" path="system.valuetuple.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.testframework.extensions.dll" path="microsoft.visualstudio.testplatform.testframework.extensions.dll" reason="path_is_excluded" />
+    <skipped_module name="system.text.encodings.web.dll" path="system.text.encodings.web.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.signalr.dll" path="microsoft.aspnetcore.signalr.dll" reason="no_symbols" />
+    <skipped_module name="system.net.webheadercollection.dll" path="system.net.webheadercollection.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.stacktrace.dll" path="system.diagnostics.stacktrace.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.identitymodel.abstractions.dll" path="microsoft.identitymodel.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.thread.dll" path="system.threading.thread.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.authorization.dll" path="microsoft.aspnetcore.authorization.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.compilerservices.unsafe.dll" path="system.runtime.compilerservices.unsafe.dll" reason="no_symbols" />
+    <skipped_module name="system.windows.dll" path="system.windows.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.httpspolicy.dll" path="microsoft.aspnetcore.httpspolicy.dll" reason="no_symbols" />
+    <skipped_module name="system.io.filesystem.driveinfo.dll" path="system.io.filesystem.driveinfo.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.razor.dll" path="microsoft.aspnetcore.razor.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.diagnostics.dll" path="microsoft.aspnetcore.diagnostics.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.ini.dll" path="microsoft.extensions.configuration.ini.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.diagnostics.healthchecks.abstractions.dll" path="microsoft.extensions.diagnostics.healthchecks.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.win32.primitives.dll" path="microsoft.win32.primitives.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.hosting.dll" path="microsoft.aspnetcore.hosting.dll" reason="no_symbols" />
+    <skipped_module name="system.drawing.dll" path="system.drawing.dll" reason="no_symbols" />
+    <skipped_module name="system.objectmodel.dll" path="system.objectmodel.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.dll" path="system.runtime.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.serialization.primitives.dll" path="system.runtime.serialization.primitives.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.extensions.eventlogcollector.dll" path="microsoft.testplatform.extensions.eventlogcollector.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.routing.dll" path="microsoft.aspnetcore.routing.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.websockets.dll" path="microsoft.aspnetcore.websockets.dll" reason="no_symbols" />
+    <skipped_module name="system.numerics.dll" path="system.numerics.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.taghelpers.dll" path="microsoft.aspnetcore.mvc.taghelpers.dll" reason="no_symbols" />
+    <skipped_module name="system.net.websockets.dll" path="system.net.websockets.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.dll" path="system.threading.dll" reason="no_symbols" />
+    <skipped_module name="system.data.datasetextensions.dll" path="system.data.datasetextensions.dll" reason="no_symbols" />
+    <skipped_module name="system.io.filesystem.watcher.dll" path="system.io.filesystem.watcher.dll" reason="no_symbols" />
+    <skipped_module name="system.net.ping.dll" path="system.net.ping.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.objectmodel.dll" path="microsoft.visualstudio.testplatform.objectmodel.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.authentication.oauth.dll" path="microsoft.aspnetcore.authentication.oauth.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.tasks.dataflow.dll" path="system.threading.tasks.dataflow.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.features.dll" path="microsoft.extensions.features.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.extensions.trx.testlogger.dll" path="microsoft.visualstudio.testplatform.extensions.trx.testlogger.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.extensions.dependencymodel.dll" path="microsoft.extensions.dependencymodel.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.loader.dll" path="system.runtime.loader.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.commandline.dll" path="microsoft.extensions.configuration.commandline.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.options.dataannotations.dll" path="microsoft.extensions.options.dataannotations.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.filesystemglobbing.dll" path="microsoft.extensions.filesystemglobbing.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.entityframeworkcore.abstractions.dll" path="microsoft.entityframeworkcore.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="system.web.httputility.dll" path="system.web.httputility.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.win32.registry.dll" path="microsoft.win32.registry.dll" reason="no_symbols" />
+    <skipped_module name="system.configuration.dll" path="system.configuration.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.build.utilities.core.dll" path="microsoft.build.utilities.core.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.compilerservices.visualc.dll" path="system.runtime.compilerservices.visualc.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.testhostruntimeprovider.dll" path="microsoft.testplatform.testhostruntimeprovider.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.mvc.razor.dll" path="microsoft.aspnetcore.mvc.razor.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.jsinterop.dll" path="microsoft.jsinterop.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.utilities.dll" path="microsoft.testplatform.utilities.dll" reason="path_is_excluded" />
+    <skipped_module name="msbuild.dll" path="msbuild.dll" reason="no_symbols" />
+    <skipped_module name="system.net.webclient.dll" path="system.net.webclient.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.fileproviders.composite.dll" path="microsoft.extensions.fileproviders.composite.dll" reason="no_symbols" />
+    <skipped_module name="nuget.protocol.dll" path="nuget.protocol.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.identitymodel.protocols.dll" path="microsoft.identitymodel.protocols.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.build.framework.dll" path="microsoft.build.framework.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.diagnostics.abstractions.dll" path="microsoft.aspnetcore.diagnostics.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.razorpages.dll" path="microsoft.aspnetcore.mvc.razorpages.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.signalr.protocols.json.dll" path="microsoft.aspnetcore.signalr.protocols.json.dll" reason="no_symbols" />
+    <skipped_module name="system.io.filesystem.dll" path="system.io.filesystem.dll" reason="no_symbols" />
+    <skipped_module name="system.security.claims.dll" path="system.security.claims.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.components.authorization.dll" path="microsoft.aspnetcore.components.authorization.dll" reason="no_symbols" />
+    <skipped_module name="system.io.isolatedstorage.dll" path="system.io.isolatedstorage.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.dll" path="microsoft.aspnetcore.dll" reason="no_symbols" />
+    <skipped_module name="system.security.securestring.dll" path="system.security.securestring.dll" reason="no_symbols" />
+    <skipped_module name="xunit.assert.dll" path="xunit.assert.dll" reason="public_key_token_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.hosting.server.abstractions.dll" path="microsoft.aspnetcore.hosting.server.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.authentication.abstractions.dll" path="microsoft.aspnetcore.authentication.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.cors.dll" path="microsoft.aspnetcore.cors.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.cookiepolicy.dll" path="microsoft.aspnetcore.cookiepolicy.dll" reason="no_symbols" />
+    <skipped_module name="system.memory.dll" path="system.memory.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.deployment.dotnet.releases.dll" path="microsoft.deployment.dotnet.releases.dll" reason="no_symbols" />
+    <skipped_module name="system.linq.parallel.dll" path="system.linq.parallel.dll" reason="no_symbols" />
+    <skipped_module name="nuget.frameworks.dll" path="nuget.frameworks.dll" reason="no_symbols" />
+    <skipped_module name="system.io.pipelines.dll" path="system.io.pipelines.dll" reason="no_symbols" />
+    <skipped_module name="system.io.compression.zipfile.dll" path="system.io.compression.zipfile.dll" reason="no_symbols" />
+    <skipped_module name="system.net.quic.dll" path="system.net.quic.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.signalr.common.dll" path="microsoft.aspnetcore.signalr.common.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.server.httpsys.dll" path="microsoft.aspnetcore.server.httpsys.dll" reason="no_symbols" />
+    <skipped_module name="system.buffers.dll" path="system.buffers.dll" reason="no_symbols" />
+    <skipped_module name="system.serviceprocess.servicecontroller.dll" path="system.serviceprocess.servicecontroller.dll" reason="no_symbols" />
+    <skipped_module name="system.dynamic.runtime.dll" path="system.dynamic.runtime.dll" reason="no_symbols" />
+    <skipped_module name="xunit.runner.utility.netcoreapp10.dll" path="xunit.runner.utility.netcoreapp10.dll" reason="public_key_token_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.antiforgery.dll" path="microsoft.aspnetcore.antiforgery.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.logging.dll" path="microsoft.extensions.logging.dll" reason="no_symbols" />
+    <skipped_module name="nuget.credentials.dll" path="nuget.credentials.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.dll" path="microsoft.aspnetcore.mvc.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.templateengine.cli.dll" path="microsoft.templateengine.cli.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.server.kestrel.transport.sockets.dll" path="microsoft.aspnetcore.server.kestrel.transport.sockets.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.identitymodel.jsonwebtokens.dll" path="microsoft.identitymodel.jsonwebtokens.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.xml.dll" path="microsoft.extensions.configuration.xml.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.localization.dll" path="microsoft.aspnetcore.mvc.localization.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.http.abstractions.dll" path="microsoft.aspnetcore.http.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.net.http.headers.dll" path="microsoft.net.http.headers.dll" reason="no_symbols" />
+    <skipped_module name="system.web.dll" path="system.web.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.net.sdk.workloadmanifestreader.dll" path="microsoft.net.sdk.workloadmanifestreader.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.contracts.dll" path="system.diagnostics.contracts.dll" reason="no_symbols" />
+    <skipped_module name="mscorlib.dll" path="mscorlib.dll" reason="path_is_excluded" />
+    <skipped_module name="system.runtime.serialization.xml.dll" path="system.runtime.serialization.xml.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.dependencyinjection.abstractions.dll" path="microsoft.extensions.dependencyinjection.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="system.private.uri.dll" path="system.private.uri.dll" reason="no_symbols" />
+    <skipped_module name="system.identitymodel.tokens.jwt.dll" path="system.identitymodel.tokens.jwt.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.outputcaching.dll" path="microsoft.aspnetcore.outputcaching.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.crossplatengine.dll" path="microsoft.testplatform.crossplatengine.dll" reason="path_is_excluded" />
+    <skipped_module name="testhost.dll" path="testhost.dll" reason="path_is_excluded" />
+    <skipped_module name="system.net.networkinformation.dll" path="system.net.networkinformation.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.authentication.dll" path="microsoft.aspnetcore.authentication.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.html.abstractions.dll" path="microsoft.aspnetcore.html.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.interopservices.javascript.dll" path="system.runtime.interopservices.javascript.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.components.forms.dll" path="microsoft.aspnetcore.components.forms.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.identitymodel.tokens.dll" path="microsoft.identitymodel.tokens.dll" reason="no_symbols" />
+    <skipped_module name="system.transactions.dll" path="system.transactions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.dataprotection.abstractions.dll" path="microsoft.aspnetcore.dataprotection.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="netstandard.dll" path="netstandard.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.server.iis.dll" path="microsoft.aspnetcore.server.iis.dll" reason="no_symbols" />
+    <skipped_module name="system.core.dll" path="system.core.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.tasks.parallel.dll" path="system.threading.tasks.parallel.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.ratelimiting.dll" path="system.threading.ratelimiting.dll" reason="no_symbols" />
+    <skipped_module name="sqlitepclraw.core.dll" path="sqlitepclraw.core.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.httpoverrides.dll" path="microsoft.aspnetcore.httpoverrides.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.client.dll" path="microsoft.visualstudio.testplatform.client.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.mvc.formatters.xml.dll" path="microsoft.aspnetcore.mvc.formatters.xml.dll" reason="no_symbols" />
+    <skipped_module name="system.data.common.dll" path="system.data.common.dll" reason="no_symbols" />
+    <skipped_module name="xunit.runner.visualstudio.dotnetcore.testadapter.dll" path="xunit.runner.visualstudio.dotnetcore.testadapter.dll" reason="public_key_token_is_excluded" />
+    <skipped_module name="system.diagnostics.textwritertracelistener.dll" path="system.diagnostics.textwritertracelistener.dll" reason="no_symbols" />
+    <skipped_module name="system.text.encoding.dll" path="system.text.encoding.dll" reason="no_symbols" />
+    <skipped_module name="system.net.http.json.dll" path="system.net.http.json.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.serialization.dll" path="system.runtime.serialization.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.keyperfile.dll" path="microsoft.extensions.configuration.keyperfile.dll" reason="no_symbols" />
+    <skipped_module name="system.io.dll" path="system.io.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.localization.dll" path="microsoft.extensions.localization.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.server.iisintegration.dll" path="microsoft.aspnetcore.server.iisintegration.dll" reason="no_symbols" />
+    <skipped_module name="system.globalization.dll" path="system.globalization.dll" reason="no_symbols" />
+    <skipped_module name="system.reflection.metadata.dll" path="system.reflection.metadata.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.tracesource.dll" path="system.diagnostics.tracesource.dll" reason="no_symbols" />
+    <skipped_module name="system.xml.xdocument.dll" path="system.xml.xdocument.dll" reason="no_symbols" />
+    <skipped_module name="system.security.cryptography.algorithms.dll" path="system.security.cryptography.algorithms.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.templateengine.edge.dll" path="microsoft.templateengine.edge.dll" reason="no_symbols" />
+    <skipped_module name="system.private.xml.linq.dll" path="system.private.xml.linq.dll" reason="no_symbols" />
+    <skipped_module name="system.xml.xpath.dll" path="system.xml.xpath.dll" reason="no_symbols" />
+    <skipped_module name="system.security.dll" path="system.security.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.hosting.abstractions.dll" path="microsoft.aspnetcore.hosting.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="sqlitepclraw.provider.e_sqlite3.dll" path="sqlitepclraw.provider.e_sqlite3.dll" reason="no_symbols" />
+    <skipped_module name="system.collections.concurrent.dll" path="system.collections.concurrent.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.entityframeworkcore.sqlite.dll" path="microsoft.entityframeworkcore.sqlite.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.responsecaching.abstractions.dll" path="microsoft.aspnetcore.responsecaching.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="system.xml.serialization.dll" path="system.xml.serialization.dll" reason="no_symbols" />
+    <skipped_module name="xunit.abstractions.dll" path="xunit.abstractions.dll" reason="public_key_token_is_excluded" />
+    <skipped_module name="microsoft.extensions.http.dll" path="microsoft.extensions.http.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.options.dll" path="microsoft.extensions.options.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.server.kestrel.core.dll" path="microsoft.aspnetcore.server.kestrel.core.dll" reason="no_symbols" />
+    <skipped_module name="system.net.dll" path="system.net.dll" reason="no_symbols" />
+    <skipped_module name="system.net.sockets.dll" path="system.net.sockets.dll" reason="no_symbols" />
+    <skipped_module name="system.reflection.emit.lightweight.dll" path="system.reflection.emit.lightweight.dll" reason="no_symbols" />
+    <skipped_module name="system.security.principal.windows.dll" path="system.security.principal.windows.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.http.features.dll" path="microsoft.aspnetcore.http.features.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.staticfiles.dll" path="microsoft.aspnetcore.staticfiles.dll" reason="no_symbols" />
+    <skipped_module name="system.xml.readerwriter.dll" path="system.xml.readerwriter.dll" reason="no_symbols" />
+    <skipped_module name="xunit.runner.reporters.netcoreapp10.dll" path="xunit.runner.reporters.netcoreapp10.dll" reason="public_key_token_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.components.server.dll" path="microsoft.aspnetcore.components.server.dll" reason="no_symbols" />
+    <skipped_module name="system.net.websockets.client.dll" path="system.net.websockets.client.dll" reason="no_symbols" />
+    <skipped_module name="system.componentmodel.dll" path="system.componentmodel.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.data.sqlite.dll" path="microsoft.data.sqlite.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.eventlog.dll" path="system.diagnostics.eventlog.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.components.web.dll" path="microsoft.aspnetcore.components.web.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.extensions.html.testlogger.dll" path="microsoft.visualstudio.testplatform.extensions.html.testlogger.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.localization.dll" path="microsoft.aspnetcore.localization.dll" reason="no_symbols" />
+    <skipped_module name="system.security.cryptography.pkcs.dll" path="system.security.cryptography.pkcs.dll" reason="no_symbols" />
+    <skipped_module name="system.text.encoding.extensions.dll" path="system.text.encoding.extensions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualbasic.dll" path="microsoft.visualbasic.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.caching.memory.dll" path="microsoft.extensions.caching.memory.dll" reason="no_symbols" />
+    <skipped_module name="system.data.dll" path="system.data.dll" reason="no_symbols" />
+    <skipped_module name="system.text.encoding.codepages.dll" path="system.text.encoding.codepages.dll" reason="no_symbols" />
+    <skipped_module name="system.net.security.dll" path="system.net.security.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.templatesearch.common.dll" path="microsoft.templatesearch.common.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.dependencyinjection.dll" path="microsoft.extensions.dependencyinjection.dll" reason="no_symbols" />
+    <skipped_module name="swashbuckle.aspnetcore.swaggergen.dll" path="swashbuckle.aspnetcore.swaggergen.dll" reason="no_symbols" />
+    <skipped_module name="system.security.cryptography.openssl.dll" path="system.security.cryptography.openssl.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.usersecrets.dll" path="microsoft.extensions.configuration.usersecrets.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.tools.dll" path="system.diagnostics.tools.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.session.dll" path="microsoft.aspnetcore.session.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.authentication.cookies.dll" path="microsoft.aspnetcore.authentication.cookies.dll" reason="no_symbols" />
+    <skipped_module name="system.reflection.emit.dll" path="system.reflection.emit.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.identity.core.dll" path="microsoft.extensions.identity.core.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.dataannotations.dll" path="microsoft.aspnetcore.mvc.dataannotations.dll" reason="no_symbols" />
+    <skipped_module name="system.security.cryptography.dll" path="system.security.cryptography.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.json.dll" path="microsoft.extensions.configuration.json.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.metadata.dll" path="microsoft.aspnetcore.metadata.dll" reason="no_symbols" />
+    <skipped_module name="system.resources.resourcemanager.dll" path="system.resources.resourcemanager.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.apiexplorer.dll" path="microsoft.aspnetcore.mvc.apiexplorer.dll" reason="no_symbols" />
+    <skipped_module name="system.security.principal.dll" path="system.security.principal.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.webutilities.dll" path="microsoft.aspnetcore.webutilities.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.configuration.abstractions.dll" path="microsoft.extensions.configuration.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.extensions.blamedatacollector.dll" path="microsoft.testplatform.extensions.blamedatacollector.dll" reason="path_is_excluded" />
+    <skipped_module name="system.xml.xmldocument.dll" path="system.xml.xmldocument.dll" reason="no_symbols" />
+    <skipped_module name="system.net.nameresolution.dll" path="system.net.nameresolution.dll" reason="no_symbols" />
+    <skipped_module name="system.drawing.primitives.dll" path="system.drawing.primitives.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.threadpool.dll" path="system.threading.threadpool.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.entityframeworkcore.inmemory.dll" path="microsoft.entityframeworkcore.inmemory.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.http.extensions.dll" path="microsoft.aspnetcore.http.extensions.dll" reason="no_symbols" />
+    <skipped_module name="system.reflection.typeextensions.dll" path="system.reflection.typeextensions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.visualstudio.testplatform.common.dll" path="microsoft.visualstudio.testplatform.common.dll" reason="path_is_excluded" />
+    <skipped_module name="microsoft.aspnetcore.requestdecompression.dll" path="microsoft.aspnetcore.requestdecompression.dll" reason="no_symbols" />
+    <skipped_module name="system.io.filesystem.accesscontrol.dll" path="system.io.filesystem.accesscontrol.dll" reason="no_symbols" />
+    <skipped_module name="system.xml.dll" path="system.xml.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.localization.routing.dll" path="microsoft.aspnetcore.localization.routing.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.testplatform.communicationutilities.dll" path="microsoft.testplatform.communicationutilities.dll" reason="path_is_excluded" />
+    <skipped_module name="system.security.cryptography.encoding.dll" path="system.security.cryptography.encoding.dll" reason="no_symbols" />
+    <skipped_module name="nuget.common.dll" path="nuget.common.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.connections.abstractions.dll" path="microsoft.aspnetcore.connections.abstractions.dll" reason="no_symbols" />
+    <skipped_module name="system.net.http.dll" path="system.net.http.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.hostfiltering.dll" path="microsoft.aspnetcore.hostfiltering.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.dataprotection.dll" path="microsoft.aspnetcore.dataprotection.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.identitymodel.protocols.openidconnect.dll" path="microsoft.identitymodel.protocols.openidconnect.dll" reason="no_symbols" />
+    <skipped_module name="system.private.xml.dll" path="system.private.xml.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.tracing.dll" path="system.diagnostics.tracing.dll" reason="no_symbols" />
+    <skipped_module name="system.runtime.interopservices.dll" path="system.runtime.interopservices.dll" reason="no_symbols" />
+    <skipped_module name="system.commandline.dll" path="system.commandline.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.authentication.jwtbearer.dll" path="microsoft.aspnetcore.authentication.jwtbearer.dll" reason="no_symbols" />
+    <skipped_module name="system.diagnostics.fileversioninfo.dll" path="system.diagnostics.fileversioninfo.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.dotnet.internalabstractions.dll" path="microsoft.dotnet.internalabstractions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.cryptography.internal.dll" path="microsoft.aspnetcore.cryptography.internal.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.logging.eventlog.dll" path="microsoft.extensions.logging.eventlog.dll" reason="no_symbols" />
+    <skipped_module name="system.net.mail.dll" path="system.net.mail.dll" reason="no_symbols" />
+    <skipped_module name="system.io.unmanagedmemorystream.dll" path="system.io.unmanagedmemorystream.dll" reason="no_symbols" />
+    <skipped_module name="system.io.pipes.accesscontrol.dll" path="system.io.pipes.accesscontrol.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.signalr.core.dll" path="microsoft.aspnetcore.signalr.core.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.mvc.formatters.json.dll" path="microsoft.aspnetcore.mvc.formatters.json.dll" reason="no_symbols" />
+    <skipped_module name="system.reflection.primitives.dll" path="system.reflection.primitives.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.dotnet.configurer.dll" path="microsoft.dotnet.configurer.dll" reason="no_symbols" />
+    <skipped_module name="xunit.core.dll" path="xunit.core.dll" reason="public_key_token_is_excluded" />
+    <skipped_module name="system.security.cryptography.primitives.dll" path="system.security.cryptography.primitives.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.dataprotection.extensions.dll" path="microsoft.aspnetcore.dataprotection.extensions.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.identity.stores.dll" path="microsoft.extensions.identity.stores.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.net.sdk.workloadmsbuildsdkresolver.dll" path="microsoft.net.sdk.workloadmsbuildsdkresolver.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.extensions.logging.eventsource.dll" path="microsoft.extensions.logging.eventsource.dll" reason="no_symbols" />
+    <skipped_module name="system.resources.reader.dll" path="system.resources.reader.dll" reason="no_symbols" />
+    <skipped_module name="swashbuckle.aspnetcore.swaggerui.dll" path="swashbuckle.aspnetcore.swaggerui.dll" reason="no_symbols" />
+    <skipped_module name="microsoft.aspnetcore.server.kestrel.dll" path="microsoft.aspnetcore.server.kestrel.dll" reason="no_symbols" />
+    <skipped_module name="system.threading.overlapped.dll" path="system.threading.overlapped.dll" reason="no_symbols" />
+  </skipped_modules>
+</results>
