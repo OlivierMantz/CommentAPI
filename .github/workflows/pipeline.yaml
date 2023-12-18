@@ -6,6 +6,7 @@ on:
     pull_request:
         branches: [main, dev]
 
+        
 jobs:
     run_linter:
         runs-on: ubuntu-latest
