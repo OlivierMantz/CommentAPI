@@ -133,6 +133,8 @@ jobs:
           run: |
             echo "Listing contents of the downloaded artifacts directory:"
             ls 
+            echo "***"
+            ls CommentAPITests
 
         - name: Print the contents of the coverage report
           run: |
