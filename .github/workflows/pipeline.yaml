@@ -24,56 +24,39 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   DISABLE_ERRORS: true
 
-    build_and_sonarcloud_analysis:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v4
-    
-        - name: Setup .NET Core SDK
-          uses: actions/setup-dotnet@v2
-          with:
-            dotnet-version: "7.0.x"
-    
-        - name: Set up JDK 17 for SonarCloud
-          uses: actions/setup-java@v3
-          with:
-            java-version: 17
-            distribution: 'zulu'
-    
-        - name: Install SonarScanner
-          run: |
-            dotnet tool install --global dotnet-sonarscanner
-            echo "Adding .NET global tools to PATH..."
-            echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
-    
-        - name: Begin SonarCloud Scan
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          run: |
-            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
-    
-        - name: Restore Dependencies
-          run: dotnet restore "./CommentAPI/CommentAPI.csproj"
-    
-        - name: Restore Test Dependencies
-          run: dotnet restore "./CommentAPITests/CommentAPITests.csproj"
-    
-        - name: Restore NuGet Packages
-          run: dotnet restore
-    
-        - name: Build
-          run: dotnet build --configuration Release --no-restore
-    
-        - name: End SonarCloud Scan
-          env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-                        
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Setup .NET Core SDK
+              uses: actions/setup-dotnet@v2
+              with:
+                  dotnet-version: "7.0.x"
+
+            - name: Restore Dependencies
+              run: dotnet restore "./CommentAPI/CommentAPI.csproj"
+
+            - name: Restore Test Dependencies
+              run: dotnet restore "./CommentAPITests/CommentAPITests.csproj"
+
+            - name: Restore NuGet Packages
+              run: dotnet restore
+
+            - name: Build
+              run: dotnet build --configuration Release --no-restore
+
+            - name: Publish Build Artifacts
+              uses: actions/upload-artifact@v3
+              with:
+                  name: built-app
+                  path: |
+                      CommentAPI/bin/Release/net7.0/
+                      CommentAPITests/bin/Release/net7.0/
 
     test:
-      needs: build_and_sonarcloud_analysis
+      needs: build
       runs-on: ubuntu-latest
       steps:
         - name: Checkout Repository
@@ -169,7 +152,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           run: |
-            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
+            dotnet sonarscanner begin /k:"OlivierMantz_CommentAPI" /o:"oliviermantz" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml" /d:sonar.exclusions="**/Migrations/*.cs,**/*.js,**/*.css" /d:sonar.verbose=true
     
         - name: Restore NuGet packages
           run: dotnet restore  
