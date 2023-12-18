@@ -61,37 +61,36 @@ jobs:
       steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
-
+    
         - name: Setup .NET Core SDK
           uses: actions/setup-dotnet@v2
           with:
             dotnet-version: "7.0.x"
-
+    
         - name: Download Build Artifacts
           uses: actions/download-artifact@v3
           with:
             name: built-app
             path: .
-
-        - name: Test and Collect Coverage
-          run: dotnet test ./CommentAPITests/CommentAPITests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/
-                            
-        - name: Print Current Working Directory
+    
+        - name: Restore Dependencies
           run: |
-              ls /home/runner/work/CommentAPI/CommentAPI/CommentAPITests/
-              echo "***"
-              ls -R ./CommentAPITests/TestResults
-              echo "***"
-              ls -R ./CommentAPITests/TestResults/**/coverage.opencover.xml
-              echo "***"
-              cat ./CommentAPITests/TestResults/**/coverage.opencover.xml || echo "Coverage file not found."
-
-  
+            dotnet restore "./CommentAPI/CommentAPI.csproj"
+            dotnet restore "./CommentAPITests/CommentAPITests.csproj"
+    
+        - name: Install `dotnet-cover`
+          run: |
+            dotnet tool install --global dotnet-cover
+    
+        - name: Run Tests with `dotnet-cover`
+          run: |
+            dotnet-cover test --output:./dotCover.Output.html
+    
         - name: Upload Coverage Report as Artifact
           uses: actions/upload-artifact@v3
           with:
             name: code-coverage
-            path: ./CommentAPITests/TestResults/**/coverage.opencover.xml
+            path: ./dotCover.Output.html
           
     
                   
@@ -140,8 +139,7 @@ jobs:
     
         - name: Run Tests with `dotnet-cover`
           run: |
-            # Replace with the appropriate command to run tests with dotnet-cover
-            # Example: dotnet-cover test
+            dotnet-cover test
     
         - name: End SonarCloud Scan
           env:
