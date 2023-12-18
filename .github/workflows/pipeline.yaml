@@ -77,15 +77,13 @@ jobs:
           run: dotnet test ./CommentAPITests/CommentAPITests.csproj --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
                   
         - name: Print Current Working Directory
-          run: |
-            echo "***"
-            ls /home/runner/work/CommentAPI/CommentAPI/CommentAPITests/ 
+          run: ls /home/runner/work/CommentAPI/CommentAPI/CommentAPITests/
   
         - name: Upload Coverage Report as Artifact
           uses: actions/upload-artifact@v3
           with:
             name: code-coverage
-            path: ./CommentAPITests/TestResults/**/coverage.opencover.xml
+            path: /TestResults/**/coverage.opencover.xml
           
     publish_to_dockerhub:
         needs: [test]
@@ -137,10 +135,9 @@ jobs:
 
         - name: Print the contents of the coverage report
           run: |
-            echo "Printing the contents of coverage.cobertura.xml:"
-            cat ./coverage.cobertura.xml || echo "Coverage file not found."
+            echo "Printing the contents of coverage.opencover.xml:"
+            cat ./coverage-report/coverage.opencover.xml || echo "Coverage file not found."
           shell: bash
-
 
         - name: Install SonarScanner
           run: |
