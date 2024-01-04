@@ -21,11 +21,35 @@ namespace CommentAPI.Controllers.Tests
 {
     public class CommentsControllerIntegrationTests
     {
+        private Guid CommentId1;
+        private Guid CommentId2;
+        private Guid CommentId3;
+        private Guid PostId1;
+        private Guid PostId2;
+        private Guid PostId3;
+
+        public CommentsControllerIntegrationTests()
+        {
+            SetupTestData();
+        }
+        private void SetupTestData()
+        {
+            CommentId1 = Guid.NewGuid();
+            CommentId2 = Guid.NewGuid();
+            CommentId3 = Guid.NewGuid();
+            PostId1 = Guid.NewGuid();
+            PostId2 = Guid.NewGuid();
+            PostId3 = Guid.NewGuid();
+
+            using var context = new ApplicationDbContext(CreateNewContextOptions());
+            PopulateTestData(context);
+        }
         private DbContextOptions<ApplicationDbContext> CreateNewContextOptions()
         {
-            // Create options for ApplicationDbContext
+            // Create a unique name for each in-memory database
+            string dbName = Guid.NewGuid().ToString();
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "InMemoryAppDatabase")
+                .UseInMemoryDatabase(databaseName: dbName)
                 .Options;
 
             return options;
@@ -35,21 +59,20 @@ namespace CommentAPI.Controllers.Tests
         {
             var testData = new[]
             {
-                new Comment { Content = "Nice image", UserId = "1", PostId = 1 },
-                new Comment { Content = "Cool", UserId = "2", PostId = 1 },
-                new Comment { Content = "Beautiful", UserId = "2", PostId = 2 },
-                new Comment { Content = "Great", UserId = "3", PostId = 2 } 
+                new Comment { Id = CommentId1, Content = "Nice image", AuthorId = "1", PostId = PostId1 },
+                new Comment { Id = CommentId2, Content = "Cool", AuthorId = "2", PostId = PostId2 },
+                new Comment { Id = CommentId3, Content = "Cool", AuthorId = "3", PostId = PostId3 },
             };
 
             context.Comments.AddRange(testData);
             context.SaveChanges();
         }
 
-        private void MockUserAuthentication(CommentsController controller, string userId = "1", string role = null)
+        private void MockUserAuthentication(CommentsController controller, string authorId="1", string role = null)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, userId)
+                new Claim(ClaimTypes.NameIdentifier, authorId)
             };
 
             if (!string.IsNullOrEmpty(role))
@@ -80,7 +103,7 @@ namespace CommentAPI.Controllers.Tests
             var commentService = new CommentService(commentRepository);
             var controller = new CommentsController(commentService);
 
-            MockUserAuthentication(controller, "adminUserId", "Admin");
+            MockUserAuthentication(controller, "AdminUserId", "Admin");
 
             var result = await controller.GetAllCommentsAsync();
 
@@ -121,9 +144,7 @@ namespace CommentAPI.Controllers.Tests
 
             MockUserAuthentication(controller);
 
-            long postId = 1;
-
-            var result = await controller.GetAllCommentsInPost(postId);
+            var result = await controller.GetAllCommentsInPost(PostId1);
 
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             var comments = Assert.IsAssignableFrom<IEnumerable<CommentDTO>>(okResult.Value);
@@ -131,8 +152,8 @@ namespace CommentAPI.Controllers.Tests
         }
 
         [Theory]
-        [InlineData(999)]
-        public async Task GetAllComments_InPost_InvalidPostId_ReturnsEmpty(long postId)
+        [InlineData()]
+        public async Task GetAllComments_InPost_InvalidPostId_ReturnsEmpty()
         {
             var options = CreateNewContextOptions();
             using var context = new ApplicationDbContext(options);
@@ -144,7 +165,7 @@ namespace CommentAPI.Controllers.Tests
 
             MockUserAuthentication(controller);
 
-            var result = await controller.GetAllCommentsInPost(postId);
+            var result = await controller.GetAllCommentsInPost(new Guid());
 
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             var comments = Assert.IsAssignableFrom<IEnumerable<CommentDTO>>(okResult.Value);
@@ -152,8 +173,8 @@ namespace CommentAPI.Controllers.Tests
         }
 
         [Theory]
-        [InlineData(1)]
-        public async Task Post_CreateComment(long postId)
+        [InlineData()]
+        public async Task Post_CreateComment()
         {
             var options = CreateNewContextOptions();
             using var context = new ApplicationDbContext(options);
@@ -170,21 +191,21 @@ namespace CommentAPI.Controllers.Tests
                 Content = "Great comment!"
             };
 
-            var result = await controller.CreateCommentAsync(postId, createCommentDTO);
+            var result = await controller.CreateCommentAsync(PostId1, createCommentDTO);
 
             var okResult = Assert.IsType<OkObjectResult>(result);
             var commentDto = Assert.IsType<CommentDTO>(okResult.Value);
 
             Assert.Equal(createCommentDTO.Content, commentDto.Content);
-            Assert.Equal(postId, commentDto.PostId);
+            Assert.Equal(PostId1, commentDto.PostId);
 
-            var savedComment = await context.Comments.FirstOrDefaultAsync(c => c.Content == createCommentDTO.Content && c.PostId == postId);
+            var savedComment = await context.Comments.FirstOrDefaultAsync(c => c.Content == createCommentDTO.Content && c.PostId == PostId1);
             Assert.NotNull(savedComment);
         }
 
         [Theory]
-        [InlineData(1)]
-        public async Task Post_CreateComment_InvalidData_ReturnsBadRequest(long postId)
+        [InlineData()]
+        public async Task Post_CreateComment_InvalidData_ReturnsBadRequest()
         {
             var options = CreateNewContextOptions();
             using var context = new ApplicationDbContext(options);
@@ -200,14 +221,14 @@ namespace CommentAPI.Controllers.Tests
             {
                 Content = ""
             };
-            var result = await controller.CreateCommentAsync(postId, createCommentDTO);
+            var result = await controller.CreateCommentAsync(PostId1, createCommentDTO);
 
             Assert.IsType<BadRequestResult>(result);
         }
 
         [Theory]
-        [InlineData(1)]
-        public async Task DeleteComment_Admin(long commentId)
+        [InlineData()]
+        public async Task DeleteComment_Admin()
         {
             var options = CreateNewContextOptions();
             using var context = new ApplicationDbContext(options);
@@ -219,16 +240,16 @@ namespace CommentAPI.Controllers.Tests
 
             MockUserAuthentication(controller);
 
-            var result = await controller.DeleteComment(commentId);
+            var result = await controller.DeleteComment(CommentId1);
 
             Assert.IsType<NoContentResult>(result);
-            var deletedComment = await context.Comments.FindAsync(commentId);
+            var deletedComment = await context.Comments.FindAsync(CommentId1);
             Assert.Null(deletedComment);
         }
 
         [Theory]
-        [InlineData(2, "2")]
-        public async Task DeleteComment_OwnComment(long commentId, string userId)
+        [InlineData("2")]
+        public async Task DeleteComment_OwnComment(string authorId)
         {
             var options = CreateNewContextOptions();
             using var context = new ApplicationDbContext(options);
@@ -239,21 +260,21 @@ namespace CommentAPI.Controllers.Tests
             var commentService = new CommentService(commentRepository);
             var controller = new CommentsController(commentService);
 
-            MockUserAuthentication(controller, userId);
+            MockUserAuthentication(controller, authorId);
 
             // CommentId retrieved via debugging for now
             //var result1 = await controller.GetAllCommentsInPost(1);
 
-            var result = await controller.DeleteComment(commentId);
+            var result = await controller.DeleteComment(CommentId2);
 
             Assert.IsType<NoContentResult>(result);
-            var deletedComment = await context.Comments.FindAsync(commentId);
+            var deletedComment = await context.Comments.FindAsync(CommentId2);
             Assert.Null(deletedComment);
         }
 
         [Theory]
-        [InlineData(4, "2")]
-        public async Task DeleteComment_OtherUser_Forbidden(long commentId, string userId)
+        [InlineData("2")]
+        public async Task DeleteComment_OtherUser_Forbidden(string authorId)
         {
             var options = CreateNewContextOptions();
             using var context = new ApplicationDbContext(options);
@@ -264,9 +285,9 @@ namespace CommentAPI.Controllers.Tests
             var commentService = new CommentService(commentRepository);
             var controller = new CommentsController(commentService);
 
-            MockUserAuthentication(controller, userId);
+            MockUserAuthentication(controller, authorId);
 
-            var result = await controller.DeleteComment(commentId);
+            var result = await controller.DeleteComment(CommentId1);
 
             Assert.IsType<ForbidResult>(result);
         }

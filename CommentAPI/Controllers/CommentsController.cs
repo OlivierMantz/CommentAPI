@@ -32,7 +32,7 @@ public class CommentsController : ControllerBase
         {
             Id = Comment.Id,
             Content = Comment.Content,
-            UserId= Comment.UserId,
+            AuthorId = Comment.AuthorId,
             PostId = Comment.PostId
         };
         return CommentDto;
@@ -47,8 +47,8 @@ public class CommentsController : ControllerBase
         return Ok(commentDtos);
     }
 
-    [HttpGet("post/{postId:long}")]
-    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(long postId)
+    [HttpGet("post/{postId:Guid}")]
+    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(Guid postId)
     {
         var comments = await _commentService.GetAllCommentsInPostAsync(postId);
         var commentDtos = comments.Select(CommentToDto).ToList();
@@ -56,16 +56,16 @@ public class CommentsController : ControllerBase
     }
 
     [Authorize(Roles = "User, Admin")]
-    [HttpPost("post/{postId}")]
-    public async Task<IActionResult> CreateCommentAsync(long postId, [FromBody] CreateCommentDTO createCommentDTO)
+    [HttpPost("post/{postId:guid}")]
+    public async Task<IActionResult> CreateCommentAsync(Guid postId, [FromBody] CreateCommentDTO createCommentDTO)
     {
-        if (string.IsNullOrEmpty(createCommentDTO.Content) || postId <= 0)
+        if (string.IsNullOrEmpty(createCommentDTO.Content))
         {
             return BadRequest();
         }
 
-        var userId = GetCurrentUserId();
-        if (string.IsNullOrEmpty(userId))
+        var authorId = GetCurrentUserId();
+        if (string.IsNullOrEmpty(authorId))
         {
             return Unauthorized();
         }
@@ -73,7 +73,7 @@ public class CommentsController : ControllerBase
         var comment = new Comment
         {
             Content = createCommentDTO.Content,
-            UserId = userId,
+            AuthorId = authorId,
             PostId = postId
         };
 
@@ -88,12 +88,10 @@ public class CommentsController : ControllerBase
     }
 
     // PUT
-
-
     //DELETE api/Comments/3
     [Authorize(Roles = "User, Admin")]
-    [HttpDelete("{id:long}")]
-    public async Task<IActionResult> DeleteComment(long id)
+    [HttpDelete("{id:Guid}")]
+    public async Task<IActionResult> DeleteComment(Guid id)
     {
         var existingComment = await _commentService.GetCommentByIdAsync(id);
         if (existingComment == null)
@@ -101,10 +99,10 @@ public class CommentsController : ControllerBase
             return NotFound();
         }
 
-        var currentUserId = GetCurrentUserId();
+        var currentAuthorId = GetCurrentUserId();
 
 
-        if (existingComment.UserId != currentUserId && !User.IsInRole("Admin"))
+        if (existingComment.AuthorId != currentAuthorId && !User.IsInRole("Admin"))
         {
             return Forbid();
         }

@@ -14,6 +14,15 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
 builder.Services.AddMemoryCache();
 
 var secKey = builder.Configuration.GetValue<string>("Security:SecurityKey");
@@ -56,6 +65,8 @@ if (builder.Configuration.GetValue<bool>("RUN_MIGRATIONS_ON_STARTUP"))
 
 
 SeedDatabase(app);
+
+app.UseCors("AllowSpecificOrigin");
 
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
@@ -109,20 +120,20 @@ void SeedDatabase(WebApplication app)
                 new Comment
                 {
                     Content = "Nice image",
-                    UserId = "1",
-                    PostId = 1
+                    AuthorId = "1",
+                    PostId = new Guid("15db589f-d535-4180-b94b-7b3d23f67a70")
                 },
                 new Comment
                 {
                     Content = "Cool",
-                    UserId = "2",
-                    PostId = 1
+                    AuthorId = "2",
+                    PostId = new Guid("15db589f-d535-4180-b94b-7b3d23f67a70")
                 },
                 new Comment
                 {
                     Content = "Beautiful",
-                    UserId = "2",
-                    PostId = 2,
+                    AuthorId = "2",
+                    PostId = new Guid("1eff8b0d-6e89-49c5-9b1e-7e940368553c"),
                 }
             );
             context.SaveChanges();

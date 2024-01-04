@@ -18,7 +18,7 @@ namespace BackEnd.Repositories
             _context = context;
         }
 
-        public async Task<Comment> GetCommentByIdAsync(long id)
+        public async Task<Comment> GetCommentByIdAsync(Guid id)
         {
             return await _context.Comments.FirstOrDefaultAsync(u => u.Id == id);
         }
@@ -28,7 +28,7 @@ namespace BackEnd.Repositories
             return await _context.Comments.ToListAsync();
         }
 
-        public async Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(long postId)
+        public async Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(Guid postId)
         {
             return await _context.Comments
                                  .Where(c => c.PostId == postId)
@@ -55,7 +55,7 @@ namespace BackEnd.Repositories
             return updated > 0;
         }
 
-        public async Task<bool> DeleteCommentAsync(long id)
+        public async Task<bool> DeleteCommentAsync(Guid id)
         {
             var Comment = await _context.Comments.FindAsync(id);
             if (Comment != null)
@@ -68,7 +68,7 @@ namespace BackEnd.Repositories
             return false;
         }
 
-        public async Task<bool> CommentExistsAsync(long commentId)
+        public async Task<bool> CommentExistsAsync(Guid commentId)
         {
             return await _context.Comments.AnyAsync(u => u.Id == commentId);
         }

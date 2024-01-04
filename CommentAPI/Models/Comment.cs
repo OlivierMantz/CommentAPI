@@ -7,14 +7,14 @@ namespace CommentAPI.Models
     public class Comment
     {
         [Key]
-        public long Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Content { get; set; }
 
-        public string UserId { get; set; }
+        public string AuthorId { get; set; }
 
         [Required]
-        public long PostId { get; set; }
+        public Guid PostId { get; set; }
     }
 }
