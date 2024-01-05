@@ -226,6 +226,90 @@ namespace CommentAPI.Controllers.Tests
             Assert.IsType<BadRequestResult>(result);
         }
 
+        [Fact]
+        public async Task CreateCommentAsync_NoAuthorId_ReturnsUnauthorized()
+        {
+            var options = CreateNewContextOptions();
+            using var context = new ApplicationDbContext(options);
+            var commentService = new Mock<ICommentService>();
+            var controller = new CommentsController(commentService.Object);
+
+            MockUserAuthentication(controller, ""); 
+
+            var createCommentDTO = new CreateCommentDTO { Content = "Test Content" };
+
+            var result = await controller.CreateCommentAsync(Guid.NewGuid(), createCommentDTO);
+
+            Assert.IsType<UnauthorizedResult>(result);
+        }
+
+        [Fact]
+        public async Task CreateCommentAsync_ServiceReturnsNull_ReturnsInternalServerError()
+        {
+            var options = CreateNewContextOptions();
+            using var context = new ApplicationDbContext(options);
+            var commentService = new Mock<ICommentService>();
+            commentService.Setup(s => s.CreateCommentAsync(It.IsAny<Comment>()))
+                          .ReturnsAsync((Comment)null);
+            var controller = new CommentsController(commentService.Object);
+
+            MockUserAuthentication(controller, "1");
+
+            var createCommentDTO = new CreateCommentDTO { Content = "Test Content" };
+
+            var result = await controller.CreateCommentAsync(Guid.NewGuid(), createCommentDTO);
+
+            var statusCodeResult = Assert.IsType<StatusCodeResult>(result);
+            Assert.Equal(StatusCodes.Status500InternalServerError, statusCodeResult.StatusCode);
+        }
+
+
+
+        [Fact]
+        public async Task UpdateComment()
+        {
+            var options = CreateNewContextOptions();
+            using var context = new ApplicationDbContext(options);
+            PopulateTestData(context);
+
+            var commentRepository = new CommentRepository(context);
+            var commentService = new CommentService(commentRepository);
+            var controller = new CommentsController(commentService);
+
+            MockUserAuthentication(controller, "1");
+
+            var updatedContent = "Updated comment content";
+            var createCommentDTO = new CreateCommentDTO { Content = updatedContent };
+
+            var result = await controller.UpdateCommentAsync(CommentId1, createCommentDTO);
+
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var updatedCommentDto = Assert.IsType<CommentDTO>(okResult.Value);
+            Assert.Equal(updatedContent, updatedCommentDto.Content);
+        }
+
+        [Fact]
+        public async Task UpdateComment_Unauthorized()
+        {
+            var options = CreateNewContextOptions();
+            using var context = new ApplicationDbContext(options);
+            PopulateTestData(context);
+
+            var commentRepository = new CommentRepository(context);
+            var commentService = new CommentService(commentRepository);
+            var controller = new CommentsController(commentService);
+
+            MockUserAuthentication(controller, "UnauthenticatedUserId");
+
+            var updatedContent = "Updated comment content";
+            var createCommentDTO = new CreateCommentDTO { Content = updatedContent };
+
+            var result = await controller.UpdateCommentAsync(CommentId1, createCommentDTO);
+
+            Assert.IsType<ForbidResult>(result);
+        }
+
+
         [Theory]
         [InlineData()]
         public async Task DeleteComment_Admin()

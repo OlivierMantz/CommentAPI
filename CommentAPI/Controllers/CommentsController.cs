@@ -87,7 +87,40 @@ public class CommentsController : ControllerBase
         return Ok(createdCommentDto);
     }
 
-    // PUT
+    // PUT api/Comments/3
+    [Authorize(Roles = "User, Admin")]
+    [HttpPut("{id:Guid}")]
+    public async Task<IActionResult> UpdateCommentAsync(Guid id, [FromBody] CreateCommentDTO updatedCommentDTO)
+    {
+        var existingComment = await _commentService.GetCommentByIdAsync(id);
+        if (existingComment == null)
+        {
+            return NotFound();
+        }
+
+        var currentUserId = GetCurrentUserId();
+        if (existingComment.AuthorId != currentUserId && !User.IsInRole("Admin"))
+        {
+            return Forbid();
+        }
+
+        if (string.IsNullOrEmpty(updatedCommentDTO.Content))
+        {
+            return BadRequest("Comment content cannot be empty.");
+        }
+
+        existingComment.Content = updatedCommentDTO.Content;
+        var success = await _commentService.PutCommentAsync(existingComment);
+        if (!success)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+        var updatedCommentDto = CommentToDto(existingComment);
+        return Ok(updatedCommentDto);
+    }
+
+
     //DELETE api/Comments/3
     [Authorize(Roles = "User, Admin")]
     [HttpDelete("{id:Guid}")]
