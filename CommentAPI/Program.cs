@@ -100,11 +100,17 @@ void ApplyMigrations(WebApplication app)
     using (var scope = app.Services.CreateScope())
     {
         var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        dbContext.Database.EnsureCreated();
 
-        dbContext.Database.Migrate();
+        var appliedMigrations = dbContext.Database.GetAppliedMigrations();
+        var totalMigrations = dbContext.Database.GetMigrations();
+
+        if (appliedMigrations.Count() != totalMigrations.Count())
+        {
+            dbContext.Database.Migrate();
+        }
     }
 }
+
 void SeedDatabase(WebApplication app)
 {
     using (var scope = app.Services.CreateScope())
