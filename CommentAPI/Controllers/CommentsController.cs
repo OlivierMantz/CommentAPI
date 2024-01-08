@@ -50,6 +50,7 @@ public class CommentsController : ControllerBase
     [HttpGet("post/{postId:Guid}")]
     public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(Guid postId)
     {
+        Console.WriteLine("GetAllCommentsInPost");
         var comments = await _commentService.GetAllCommentsInPostAsync(postId);
         var commentDtos = comments.Select(CommentToDto).ToList();
         return Ok(commentDtos);
