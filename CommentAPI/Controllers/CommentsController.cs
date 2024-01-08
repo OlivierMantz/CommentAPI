@@ -48,6 +48,7 @@ public class CommentsController : ControllerBase
     }
 
     [HttpGet("post/{postId:Guid}")]
+    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(Guid postId)
     {
         Console.WriteLine("GetAllCommentsInPost");

@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Configuration;
 using System.Security.Claims;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 
@@ -27,8 +28,10 @@ builder.Services.AddMemoryCache();
 
 var secKey = builder.Configuration.GetValue<string>("Security:SecurityKey");
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("SQLiteConnection")));
+    options.UseNpgsql(connectionString));
+
 
 
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
@@ -56,15 +59,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-CreateDB(app);
-
-if (builder.Configuration.GetValue<bool>("RUN_MIGRATIONS_ON_STARTUP"))
+using (var scope = app.Services.CreateScope())
 {
-    ApplyMigrations(app);
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    bool v = await dbContext.Database.EnsureCreatedAsync();
 }
+//CreateDB(app);
+
+//if (builder.Configuration.GetValue<bool>("RUN_MIGRATIONS_ON_STARTUP"))
+//{
+//    ApplyMigrations(app);
+//}
 
 
-SeedDatabase(app);
+//SeedDatabase(app);
 
 app.UseCors("AllowSpecificOrigin");
 
@@ -91,59 +99,60 @@ cache.Set("SecurityKey", secKey);
 
 
 
-void CreateDB(WebApplication app)
-{
+//void CreateDB(WebApplication app)
+//{
 
-}
-void ApplyMigrations(WebApplication app)
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+//}
+//void ApplyMigrations(WebApplication app)
+//{
+//    using (var scope = app.Services.CreateScope())
+//    {
+//        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-        var appliedMigrations = dbContext.Database.GetAppliedMigrations();
-        var totalMigrations = dbContext.Database.GetMigrations();
+//        var appliedMigrations = dbContext.Database.GetAppliedMigrations();
+//        var totalMigrations = dbContext.Database.GetMigrations();
 
-        if (appliedMigrations.Count() != totalMigrations.Count())
-        {
-            dbContext.Database.Migrate();
-        }
-    }
-}
+//        if (appliedMigrations.Count() != totalMigrations.Count())
+//        {
+//            dbContext.Database.Migrate();
+//        }
+//    }
+//}
 
-void SeedDatabase(WebApplication app)
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var services = scope.ServiceProvider;
-        var context = services.GetRequiredService<ApplicationDbContext>();
+//void SeedDatabase(WebApplication app)
+//{
+//    using (var scope = app.Services.CreateScope())
+//    {
+//        var services = scope.ServiceProvider;
+//        var context = services.GetRequiredService<ApplicationDbContext>();
 
-        // Check if the database is empty
-        if (!context.Comments.Any())
-        {
-            // Seed data
-            context.Comments.AddRange(
-                new Comment
-                {
-                    Content = "Nice image",
-                    AuthorId = "1",
-                    PostId = new Guid("15db589f-d535-4180-b94b-7b3d23f67a70")
-                },
-                new Comment
-                {
-                    Content = "Cool",
-                    AuthorId = "2",
-                    PostId = new Guid("15db589f-d535-4180-b94b-7b3d23f67a70")
-                },
-                new Comment
-                {
-                    Content = "Beautiful",
-                    AuthorId = "2",
-                    PostId = new Guid("1eff8b0d-6e89-49c5-9b1e-7e940368553c"),
-                }
-            );
-            context.SaveChanges();
-        }
-    }
-}
+//        // Check if the database is empty
+//        if (!context.Comments.Any())
+//        {
+//            // Seed data
+//            context.Comments.AddRange(
+//                new Comment
+//                {
+//                    Content = "Nice image",
+//                    AuthorId = "1",
+//                    PostId = new Guid("15db589f-d535-4180-b94b-7b3d23f67a70")
+//                },
+//                new Comment
+//                {
+//                    Content = "Cool",
+//                    AuthorId = "2",
+//                    PostId = new Guid("15db589f-d535-4180-b94b-7b3d23f67a70")
+//                },
+//                new Comment
+//                {
+//                    Content = "Beautiful",
+//                    AuthorId = "2",
+//                    PostId = new Guid("1eff8b0d-6e89-49c5-9b1e-7e940368553c"),
+//                }
+//            );
+//            context.SaveChanges();
+//        }
+//    }
+//}
+
 
