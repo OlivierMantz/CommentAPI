@@ -29,6 +29,8 @@ builder.Services.AddMemoryCache();
 var secKey = builder.Configuration.GetValue<string>("Security:SecurityKey");
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+Console.WriteLine($"Connection string: {connectionString}");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
