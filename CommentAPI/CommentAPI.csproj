@@ -26,6 +26,8 @@
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+    <PackageReference Include="prometheus-net" Version="8.2.1" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
     <PackageReference Include="SQLite" Version="3.13.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />

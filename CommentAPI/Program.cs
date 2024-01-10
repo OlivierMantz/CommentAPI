@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Security.Claims;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Prometheus;
 
 Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 
@@ -75,6 +76,7 @@ using (var scope = app.Services.CreateScope())
 
 
 //SeedDatabase(app);
+app.UseRouting();
 
 app.UseCors("AllowSpecificOrigin");
 
@@ -90,8 +92,11 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapMetrics();
+});
 
 app.Run();
 
