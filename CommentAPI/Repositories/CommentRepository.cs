@@ -48,7 +48,7 @@ namespace BackEnd.Repositories
             return Comment;
         }
 
-        public async Task<bool> PutCommentAsync(Comment Comment)
+        public async Task<bool> UpdateCommentAsync(Comment Comment)
         {
             _context.Comments.Update(Comment);
             var updated = await _context.SaveChangesAsync();

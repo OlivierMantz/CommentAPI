@@ -1,7 +1,11 @@
-﻿namespace CommentAPI.Models.DTOs
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CommentAPI.Models.DTOs
 {
     public class CreateCommentDTO
     {
-        public string Content { get; set; }
+        [Required]
+        [StringLength(500, MinimumLength = 3)]
+        public string Content { get; set; } 
     }
 }

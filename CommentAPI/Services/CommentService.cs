@@ -1,50 +1,83 @@
-﻿using CommentAPI.Repositories;
+﻿using CommentAPI.Models.DTOs;
 using CommentAPI.Models;
+using CommentAPI.Repositories;
+using CommentAPI.Services;
 
-namespace CommentAPI.Services
+public class CommentService : ICommentService
 {
-    public class CommentService : ICommentService
+    private readonly ICommentRepository _commentRepository;
+
+    public CommentService(ICommentRepository commentRepository)
     {
-        private readonly ICommentRepository _commentRepository;
+        _commentRepository = commentRepository;
+    }
 
-        public CommentService(ICommentRepository commentRepository)
-        {
-            _commentRepository = commentRepository;
-        }
-        public async Task<Comment> GetCommentByIdAsync(Guid id)
-        {
-            return await _commentRepository.GetCommentByIdAsync(id);
-        }
+    public async Task<IEnumerable<Comment>> GetAllCommentsAsync()
+    {
+        return await _commentRepository.GetAllCommentsAsync();
+    }
 
-        public async Task<IEnumerable<Comment>> GetAllCommentsAsync()
-        {
-            return await _commentRepository.GetAllCommentsAsync();
-        }  
+    public async Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(Guid postId)
+    {
+        return await _commentRepository.GetAllCommentsInPostAsync(postId);
+    }
+    public async Task<Comment> GetCommentByIdAsync(Guid commentId)
+    {
+        return await _commentRepository.GetCommentByIdAsync(commentId);
+    }
 
-        public async Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(Guid postId)
+    public async Task<Comment> CreateCommentAsync(Guid postId, CreateCommentDTO createCommentDTO, string authorId)
+    {
+        if (string.IsNullOrEmpty(createCommentDTO?.Content) || createCommentDTO.Content.Length < 3)
         {
-            return await _commentRepository.GetAllCommentsInPostAsync(postId);
-        }
-
-        public async Task<Comment> CreateCommentAsync(Comment Comment)
-        {
-            await _commentRepository.CreateCommentAsync(Comment);
-            return Comment;
+            throw new ArgumentException("Comment content cannot be empty or smaller than 3 characters long.");
         }
 
-        public async Task<bool> PutCommentAsync(Comment Comment)
+        var comment = new Comment
         {
-            return await _commentRepository.PutCommentAsync(Comment);
+            Content = createCommentDTO.Content,
+            AuthorId = authorId,
+            PostId = postId
+        };
+
+        return await _commentRepository.CreateCommentAsync(comment);
+    }
+
+    public async Task<bool> UpdateCommentAsync(Guid id, CreateCommentDTO updatedCommentDTO, string userId)
+    {
+        var existingComment = await _commentRepository.GetCommentByIdAsync(id);
+        if (existingComment == null)
+        {
+            return false; 
         }
 
-        public async Task<bool> DeleteCommentAsync(Guid id)
+        if (existingComment.AuthorId != userId)
         {
-            return await _commentRepository.DeleteCommentAsync(id);
+            throw new UnauthorizedAccessException("User is not authorized to update this comment.");
         }
 
-        public async Task<bool> CommentExistsAsync(Guid id)
+        if (string.IsNullOrEmpty(updatedCommentDTO?.Content))
         {
-            return await _commentRepository.CommentExistsAsync(id);
+            throw new ArgumentException("Comment content cannot be empty.");
         }
+
+        existingComment.Content = updatedCommentDTO.Content;
+        return await _commentRepository.UpdateCommentAsync(existingComment);
+    }
+
+    public async Task<bool> DeleteCommentAsync(Guid id, string userId)
+    {
+        var comment = await _commentRepository.GetCommentByIdAsync(id);
+        if (comment == null)
+        {
+            return false;
+        }
+
+        if (comment.AuthorId != userId)
+        {
+            throw new UnauthorizedAccessException("User is not authorized to delete this comment.");
+        }
+
+        return await _commentRepository.DeleteCommentAsync(id);
     }
 }

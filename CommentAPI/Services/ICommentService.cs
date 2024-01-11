@@ -1,4 +1,5 @@
 ﻿using CommentAPI.Models;
+using CommentAPI.Models.DTOs;
 
 namespace CommentAPI.Services
 {
@@ -7,10 +8,9 @@ namespace CommentAPI.Services
         Task<Comment> GetCommentByIdAsync(Guid id);
         Task<IEnumerable<Comment>> GetAllCommentsAsync();
         Task<IEnumerable<Comment>> GetAllCommentsInPostAsync(Guid postId);
-        Task<Comment> CreateCommentAsync(Comment comment);
-        Task<bool> PutCommentAsync(Comment comment);
-        Task<bool> DeleteCommentAsync(Guid id);
+        Task<Comment> CreateCommentAsync(Guid postId, CreateCommentDTO createCommentDTO, string authorId);
+        Task<bool> UpdateCommentAsync(Guid postId, CreateCommentDTO createCommentDTO, string authorId);
+        Task<bool> DeleteCommentAsync(Guid commentId, string userId);
         // Helper method
-        Task<bool> CommentExistsAsync(Guid id);
     }
 }

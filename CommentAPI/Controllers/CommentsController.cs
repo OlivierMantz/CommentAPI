@@ -1,149 +1,172 @@
 using Microsoft.AspNetCore.Mvc;
 using CommentAPI.Models;
 using CommentAPI.Models.DTOs;
-using CommentAPI.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using CommentAPI.Services;
-using CommentAPI.Data;
 using System.Security.Claims;
-using Microsoft.IdentityModel.Tokens;
+using System.Linq;
+using System;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
-namespace CommentAPI.Controllers;
-
-[ApiController]
-[Route("api/[controller]")]
-public class CommentsController : ControllerBase
+namespace CommentAPI.Controllers
 {
-
-    private readonly ICommentService _commentService;
-    private string GetCurrentUserId()
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CommentsController : ControllerBase
     {
-        return User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-    }
+        private readonly ICommentService _commentService;
+        private readonly ILogger<CommentsController> _logger;
 
-    public CommentsController(ICommentService commentService)
-    {
-        _commentService = commentService;
-    }
-
-    private static CommentDTO CommentToDto(Comment Comment)
-    {
-        var CommentDto = new CommentDTO
+        public CommentsController(ICommentService commentService, ILogger<CommentsController> logger)
         {
-            Id = Comment.Id,
-            Content = Comment.Content,
-            AuthorId = Comment.AuthorId,
-            PostId = Comment.PostId
-        };
-        return CommentDto;
-    }
-
-    [Authorize(Roles = "Admin")]
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsAsync()
-    {
-        var comments = await _commentService.GetAllCommentsAsync();
-        var commentDtos = comments.Select(CommentToDto).ToList();
-        return Ok(commentDtos);
-    }
-
-    [HttpGet("post/{postId:Guid}")]
-    [AllowAnonymous]
-    public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(Guid postId)
-    {
-        Console.WriteLine("GetAllCommentsInPost");
-        var comments = await _commentService.GetAllCommentsInPostAsync(postId);
-        var commentDtos = comments.Select(CommentToDto).ToList();
-        return Ok(commentDtos);
-    }
-
-    [Authorize(Roles = "User, Admin")]
-    [HttpPost("post/{postId:guid}")]
-    public async Task<IActionResult> CreateCommentAsync(Guid postId, [FromBody] CreateCommentDTO createCommentDTO)
-    {
-        if (string.IsNullOrEmpty(createCommentDTO.Content))
-        {
-            return BadRequest();
+            _commentService = commentService;
+            _logger = logger;
         }
 
-        var authorId = GetCurrentUserId();
-        if (string.IsNullOrEmpty(authorId))
+        private string GetCurrentUserId()
         {
-            return Unauthorized();
+            return User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
         }
 
-        var comment = new Comment
+        private static CommentDTO CommentToDto(Comment comment)
         {
-            Content = createCommentDTO.Content,
-            AuthorId = authorId,
-            PostId = postId
-        };
-
-        var createdComment = await _commentService.CreateCommentAsync(comment);
-        if (createdComment == null)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError);
+            return new CommentDTO
+            {
+                Id = comment.Id,
+                Content = comment.Content,
+                AuthorId = comment.AuthorId,
+                PostId = comment.PostId
+            };
         }
 
-        var createdCommentDto = CommentToDto(createdComment);
-        return Ok(createdCommentDto);
-    }
-
-    // PUT api/Comments/3
-    [Authorize(Roles = "User, Admin")]
-    [HttpPut("{id:Guid}")]
-    public async Task<IActionResult> UpdateCommentAsync(Guid id, [FromBody] CreateCommentDTO updatedCommentDTO)
-    {
-        var existingComment = await _commentService.GetCommentByIdAsync(id);
-        if (existingComment == null)
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsAsync()
         {
-            return NotFound();
+            try
+            {
+                var comments = await _commentService.GetAllCommentsAsync();
+                var commentDtos = comments.Select(CommentToDto).ToList();
+                return Ok(commentDtos);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while fetching all comments.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
+            }
         }
 
-        var currentUserId = GetCurrentUserId();
-        if (existingComment.AuthorId != currentUserId && !User.IsInRole("Admin"))
+        [HttpGet("post/{postId:Guid}")]
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<CommentDTO>>> GetAllCommentsInPost(Guid postId)
         {
-            return Forbid();
+            try
+            {
+                var comments = await _commentService.GetAllCommentsInPostAsync(postId);
+                var commentDtos = comments.Select(CommentToDto).ToList();
+                return Ok(commentDtos);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting all comments in post with Id of: {postId}", postId);
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
+            }
         }
 
-        if (string.IsNullOrEmpty(updatedCommentDTO.Content))
+        [Authorize(Roles = "User, Admin")]
+        [HttpPost("post/{postId:guid}")]
+        public async Task<IActionResult> CreateCommentAsync(Guid postId, [FromBody] CreateCommentDTO createCommentDTO)
         {
-            return BadRequest("Comment content cannot be empty.");
+            try
+            {
+                var authorId = GetCurrentUserId();
+                if (string.IsNullOrEmpty(authorId))
+                {
+                    return Unauthorized();
+                }
+
+                var createdComment = await _commentService.CreateCommentAsync(postId, createCommentDTO, authorId);
+                var createdCommentDto = CommentToDto(createdComment);
+
+                return Ok(createdCommentDto);
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogError(ex, "Invalid data provided.");
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating a comment.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
+            }
         }
 
-        existingComment.Content = updatedCommentDTO.Content;
-        var success = await _commentService.PutCommentAsync(existingComment);
-        if (!success)
+        [Authorize(Roles = "User, Admin")]
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> UpdateCommentAsync(Guid id, [FromBody] CreateCommentDTO updatedCommentDTO)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError);
+            try
+            {
+                var currentUserId = GetCurrentUserId();
+                if (string.IsNullOrEmpty(currentUserId))
+                {
+                    return Unauthorized();
+                }
+
+                bool success = await _commentService.UpdateCommentAsync(id, updatedCommentDTO, currentUserId);
+                if (!success)
+                {
+                    return NotFound("Comment not found or update failed.");
+                }
+
+                return Ok("Comment updated successfully.");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Forbid();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while updating comment with commentId: {CommentId}", id);
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
+            }
         }
 
-        var updatedCommentDto = CommentToDto(existingComment);
-        return Ok(updatedCommentDto);
-    }
-
-
-    //DELETE api/Comments/3
-    [Authorize(Roles = "User, Admin")]
-    [HttpDelete("{id:Guid}")]
-    public async Task<IActionResult> DeleteComment(Guid id)
-    {
-        var existingComment = await _commentService.GetCommentByIdAsync(id);
-        if (existingComment == null)
+        [Authorize(Roles = "User, Admin")]
+        [HttpDelete("{id:Guid}")]
+        public async Task<IActionResult> DeleteComment(Guid id)
         {
-            return NotFound();
+            try
+            {
+                var currentUserId = GetCurrentUserId();
+                if (string.IsNullOrEmpty(currentUserId))
+                {
+                    return Unauthorized();
+                }
+
+                await _commentService.DeleteCommentAsync(id, currentUserId);
+
+                return NoContent();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Forbid();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while deleting comment with commentId: {CommentId}", id);
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
+            }
         }
-
-        var currentAuthorId = GetCurrentUserId();
-
-
-        if (existingComment.AuthorId != currentAuthorId && !User.IsInRole("Admin"))
-        {
-            return Forbid();
-        }
-
-        await _commentService.DeleteCommentAsync(id);
-
-        return NoContent();
     }
 }
