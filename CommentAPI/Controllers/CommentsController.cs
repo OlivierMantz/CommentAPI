@@ -26,7 +26,12 @@ namespace CommentAPI.Controllers
 
         private string GetCurrentUserId()
         {
-            return User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                throw new InvalidOperationException("User ID not found in the current user's claims.");
+            }
+            return userId;
         }
 
         private static CommentDTO CommentToDto(Comment comment)

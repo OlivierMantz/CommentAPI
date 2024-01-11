@@ -18,9 +18,9 @@ namespace BackEnd.Repositories
             _context = context;
         }
 
-        public async Task<Comment> GetCommentByIdAsync(Guid id)
+        public async Task<Comment> GetCommentByIdAsync(Guid commentId)
         {
-            return await _context.Comments.FirstOrDefaultAsync(u => u.Id == id);
+            return await _context.Comments.FirstOrDefaultAsync(u => u.Id == commentId);
         }
 
         public async Task<IEnumerable<Comment>> GetAllCommentsAsync()
@@ -55,9 +55,9 @@ namespace BackEnd.Repositories
             return updated > 0;
         }
 
-        public async Task<bool> DeleteCommentAsync(Guid id)
+        public async Task<bool> DeleteCommentAsync(Guid commentId)
         {
-            var Comment = await _context.Comments.FindAsync(id);
+            var Comment = await _context.Comments.FindAsync(commentId);
             if (Comment != null)
             {
                 _context.Comments.Remove(Comment);

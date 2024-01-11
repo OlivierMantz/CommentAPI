@@ -8,7 +8,7 @@ namespace CommentAPI.Models.DTOs
 
         public string? Content { get; set; }
 
-        public string AuthorId { get; set; }
+        public string? AuthorId { get; set; }
 
         public Guid PostId { get; set; }
     }

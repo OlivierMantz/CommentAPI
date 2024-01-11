@@ -357,5 +357,39 @@ namespace CommentAPI.Controllers.Tests
 
             Assert.IsType<ForbidResult>(result);
         }
+
+        [Fact]
+        public async Task DeleteComment_InvalidArgument_ReturnsBadRequest()
+        {
+            var mockCommentService = new Mock<ICommentService>();
+            mockCommentService.Setup(service => service.DeleteCommentAsync(It.IsAny<Guid>(), It.IsAny<string>()))
+                              .ThrowsAsync(new ArgumentException("Invalid argument"));
+
+            var controller = new CommentsController(mockCommentService.Object, _mockLogger.Object);
+            MockUserAuthentication(controller, "TestUserId");
+
+            var result = await controller.DeleteComment(Guid.NewGuid());
+
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal("Invalid argument", badRequestResult.Value);
+        }
+
+        [Fact]
+        public async Task DeleteComment_GeneralException_ReturnsInternalServerError()
+        {
+            var mockCommentService = new Mock<ICommentService>();
+            mockCommentService.Setup(service => service.DeleteCommentAsync(It.IsAny<Guid>(), It.IsAny<string>()))
+                              .ThrowsAsync(new Exception("General error"));
+
+            var controller = new CommentsController(mockCommentService.Object, _mockLogger.Object);
+            MockUserAuthentication(controller, "TestUserId");
+
+            var result = await controller.DeleteComment(Guid.NewGuid());
+
+            var objectResult = Assert.IsType<ObjectResult>(result);
+            Assert.Equal(StatusCodes.Status500InternalServerError, objectResult.StatusCode);
+            Assert.Equal("An error occurred while processing your request.", objectResult.Value);
+        }
+
     }
 }

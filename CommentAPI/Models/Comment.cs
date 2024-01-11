@@ -12,7 +12,7 @@ namespace CommentAPI.Models
         [Required]
         public string Content { get; set; }
 
-        public string AuthorId { get; set; }
+        public string? AuthorId { get; set; }
 
         [Required]
         public Guid PostId { get; set; }
