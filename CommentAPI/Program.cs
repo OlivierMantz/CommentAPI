@@ -92,6 +92,8 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseHttpMetrics();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
